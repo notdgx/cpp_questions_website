@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRTUAL FUNCTIONS - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="../index.html">C++ Questions</a></div>
+      </nav>
+      
+
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>VIRTUAL FUNCTIONS</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Write a C++ program to create an abstract class Animal with an abstract method called sound(). Create derived classes Lion and Tiger that implement the sound() method.</a></li>
+                    <li><a href="#q2">2. Write a C++ program to create an abstract class Animal with an abstract method called sound(). Create derived classes Lion and Tiger that implement the sound() method.</a></li>
+                    <li><a href="#q3">3. Write a C++ program to create an abstract class Shape with abstract methods calculateArea() and calculatePerimeter(). Create derived classes Circle and Triangle.</a></li>
+                    <li><a href="#q4">4. Write a C++ program to create an abstract class BankAccount with abstract methods deposit() and withdraw(). Create derived classes SavingsAccount and CurrentAccount.</a></li>
+                    <li><a href="#q5">5. Write a C++ program to create an abstract class Animal with abstract methods eat() and sleep(). Create derived classes Lion, Tiger, and Deer.</a></li>
+                    <li><a href="#q6">6. Write a C++ program to create an abstract class Employee with abstract methods calculateSalary() and displayInfo(). Create derived classes Manager and Programmer.</a></li>
+                    <li><a href="#q7">7. Write a C++ program to create an abstract class Shape3D with abstract methods calculateVolume() and calculateSurfaceArea(). Create derived classes Sphere and Cube.</a></li>
+                    <li><a href="#q8">8. Write a C++ program to create an abstract class Vehicle with abstract methods startEngine() and stopEngine(). Create derived classes Car and Motorcycle.</a></li>
+                    <li><a href="#q9">9. Write a C++ program to create an abstract class Person with abstract methods eat() and exercise(). Create derived classes Athlete and LazyPerson.</a></li>
+                    <li><a href="#q10">10. Write a C++ program to create an abstract class Instrument with abstract methods play() and tune(). Create derived classes Glockenspiel and Violin.</a></li>
+                    <li><a href="#q11">11. Write a C++ program to create an abstract class Shape2D with abstract methods draw() and resize(). Create derived classes Rectangle and Circle.</a></li>
+                    <li><a href="#q12">12. Write a C++ program to create an abstract class GeometricShape with abstract methods area() and perimeter(). Create derived classes Triangle and Square.</a></li>
+                    <li><a href="#q13">13. Write a C++ program to create an abstract class Bird with abstract methods fly() and makeSound(). Create derived classes Eagle and Hawk.</a></li>
+                </ul>
+            </div>
+
+<div class="question-section" id="q1">
+<h3>1. Write a C++ program to create an abstract class Animal with an abstract method called sound(). Create derived classes Lion and Tiger that implement the sound() method.</h3>
+<div class="answer-box">
+<h4>Answer 1:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Animal{
+
+public:
+    virtual void sound() = 0;
+};
+
+
+class Lion : public Animal{
+
+public:
+    void sound(){
+        cout &lt;&lt; &quot;Lion sound \n&quot;;
+    }
+};
+
+
+class Tiger : public Animal{
+
+public:
+    void sound(){
+        cout &lt;&lt; &quot;Tiger sound\n&quot;;
+    }
+};
+
+
+int main(){
+
+    Lion lion;
+    Tiger tiger;
+
+    lion.sound();
+    tiger.sound();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 1:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que1.cpp -o que1 } ; if ($?) { .\que1 }
+Lion sound
+Tiger sound</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q2">
+<h3>2. Write a C++ program to create an abstract class Animal with an abstract method called sound(). Create derived classes Lion and Tiger that implement the sound() method.</h3>
+<div class="answer-box">
+<h4>Answer 2:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Animal{
+
+public:
+    virtual void sound() = 0;
+};
+
+
+class Lion : public Animal{
+
+public:
+    void sound(){
+        cout &lt;&lt; &quot;Lion sound \n&quot;;
+    }
+};
+
+
+class Tiger : public Animal{
+
+public:
+    void sound(){
+        cout &lt;&lt; &quot;Tiger sound\n&quot;;
+    }
+};
+
+
+int main(){
+
+    Lion lion;
+    Tiger tiger;
+
+    lion.sound();
+    tiger.sound();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 2:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que1.cpp -o que1 } ; if ($?) { .\que1 }
+Lion sound
+Tiger sound</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q3">
+<h3>3. Write a C++ program to create an abstract class Shape with abstract methods calculateArea() and calculatePerimeter(). Create derived classes Circle and Triangle.</h3>
+<div class="answer-box">
+<h4>Answer 3:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Shape{
+
+public:
+    virtual int calculateArea() = 0;
+    virtual int calculatePerimeter() = 0;
+};
+
+
+class Circle : public Shape{
+
+private:
+    int radius;
+
+public:
+    Circle(int r){
+        radius = r;
+    }
+
+    int calculateArea(){
+        return (22 * radius * radius)/7;
+    }
+
+    int calculatePerimeter(){
+        return (2 * 22 * radius)/7  ;
+    }
+};
+
+
+class Triangle : public Shape{
+
+private:
+    int a;
+    int b;
+    int c;
+    int height;
+
+public:
+    Triangle(int x, int y, int z, int h){
+        a = x;
+        b = y;
+        c = z;
+        height = h;
+    }
+
+    int calculateArea(){
+        return (a * height) / 2;
+    }
+
+    int calculatePerimeter(){
+        return a + b + c;
+    }
+};
+
+
+int main(){
+
+    Circle c(7);
+    Triangle t(6, 5, 4, 4);
+
+    cout &lt;&lt; &quot;Circle :&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Area : &quot; &lt;&lt; c.calculateArea() &lt;&lt; endl;
+    cout &lt;&lt; &quot;Perimeter : &quot; &lt;&lt; c.calculatePerimeter() &lt;&lt; endl;
+    
+    cout &lt;&lt; &quot;Triangle :&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Area : &quot; &lt;&lt; c.calculateArea() &lt;&lt; endl;
+    cout &lt;&lt; &quot;Perimeter : &quot; &lt;&lt; c.calculatePerimeter() &lt;&lt; endl;
+
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 3:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que3.cpp -o que3 } ; if ($?) { .\que3 }
+Circle :
+Area : 154
+Perimeter : 44
+Triangle :
+Area : 154
+Perimeter : 44</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q4">
+<h3>4. Write a C++ program to create an abstract class BankAccount with abstract methods deposit() and withdraw(). Create derived classes SavingsAccount and CurrentAccount.</h3>
+<div class="answer-box">
+<h4>Answer 4:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class BankAccount{
+
+protected:
+    int balance;
+
+public:
+    BankAccount(int b){
+        balance = b;
+    }
+
+    virtual void deposit(int amount) = 0;
+    virtual void withdraw(int amount) = 0;
+
+    void showBalance(){
+        cout &lt;&lt; &quot;Balance: &quot; &lt;&lt; balance &lt;&lt; &quot;\n&quot;;
+    }
+};
+
+
+class SavingsAccount : public BankAccount{
+
+public:
+    SavingsAccount(int b) : BankAccount(b){
+    }
+
+    void deposit(int amount){
+        balance += amount;
+        cout &lt;&lt; &quot;Savings deposited \n&quot;;
+    }
+
+    void withdraw(int amount){
+        if (amount &lt; balance ){
+            cout &lt;&lt; &quot;Not enought money \n&quot;;
+        }
+
+        else{
+            balance -= amount;
+            cout &lt;&lt; &quot;Savings withdrawed amount : &quot;&lt;&lt;amount;
+        }
+    }
+};
+
+
+class CurrentAccount : public BankAccount{
+
+public:
+    CurrentAccount(int b) : BankAccount(b){
+    }
+
+    void deposit(int amount){
+        balance += amount;
+        cout &lt;&lt; &quot;Current deposit done\n&quot;;
+    }
+
+    void withdraw(int amount){
+        if (amount &lt; balance ){
+            cout &lt;&lt; &quot;Not enought money \n&quot;;
+        }
+
+        else{
+            balance -= amount;
+            cout &lt;&lt; &quot;withdrawed amount : &quot;&lt;&lt;amount;
+        }
+    }
+};
+
+
+int main(){
+
+    SavingsAccount s(1000);
+    CurrentAccount c(1000);
+
+    s.deposit(200);
+    s.withdraw(950);
+    s.showBalance();
+
+    c.deposit(300);
+    c.withdraw(1300);
+    c.showBalance();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 4:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que4.cpp -o que4 } ; if ($?) { .\que4 }
+Savings deposited
+Not enought money
+Balance: 1200
+Current deposit done
+withdrawed amount : 1300Balance: 0</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q5">
+<h3>5. Write a C++ program to create an abstract class Animal with abstract methods eat() and sleep(). Create derived classes Lion, Tiger, and Deer.</h3>
+<div class="answer-box">
+<h4>Answer 5:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Animal{
+
+public:
+    virtual void eat() = 0;
+    virtual void sleep() = 0;
+};
+
+
+class Lion : public Animal{
+
+public:
+    void eat(){
+        cout &lt;&lt; &quot;Lion eats \n&quot;;
+    }
+
+    void sleep(){
+        cout &lt;&lt; &quot;Lion sleeps \n&quot;;
+    }
+};
+
+
+class Tiger : public Animal{
+
+public:
+    void eat(){
+        cout &lt;&lt; &quot;Tiger eats \n&quot;;
+    }
+
+    void sleep(){
+        cout &lt;&lt; &quot;Tiger sleeps \n&quot;;
+    }
+};
+
+
+class Deer : public Animal{
+
+public:
+    void eat(){
+        cout &lt;&lt; &quot;Deer eats \n&quot;;
+    }
+
+    void sleep(){
+        cout &lt;&lt; &quot;Deer sleeps \n&quot;;
+    }
+};
+
+
+int main(){
+
+    Lion lion;
+    Tiger tiger;
+    Deer deer;
+
+    lion.eat();
+    lion.sleep();
+
+    tiger.eat();
+    tiger.sleep();
+
+    deer.eat();
+    deer.sleep();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 5:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que5.cpp -o que5 } ; if ($?) { .\que5 }
+Lion eats
+Lion sleeps
+Tiger eats
+Tiger sleeps
+Deer eats
+Deer sleeps</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q6">
+<h3>6. Write a C++ program to create an abstract class Employee with abstract methods calculateSalary() and displayInfo(). Create derived classes Manager and Programmer.</h3>
+<div class="answer-box">
+<h4>Answer 6:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+class Employee{
+
+protected:
+    string name;
+    int base;
+
+public:
+    Employee(string n, int b){
+        name = n;
+        base = b;
+    }
+
+    virtual int calculateSalary() = 0;
+    virtual void displayInfo() = 0;
+};
+
+
+class Manager : public Employee{
+
+public:
+    Manager(string n, int b) : Employee(n, b){
+    }
+
+    int calculateSalary(){
+        return base + (base * 20) / 100;
+    }
+
+    void displayInfo(){
+        cout &lt;&lt; &quot;Manager : &quot; &lt;&lt; name &lt;&lt; &quot;\n Salary: &quot; &lt;&lt; calculateSalary() &lt;&lt; endl;
+    }
+};
+
+
+class Programmer : public Employee{
+
+public:
+    Programmer(string n, int b) : Employee(n, b){
+    }
+
+    int calculateSalary(){
+        return base + (base * 15) / 100;
+    }
+
+    void displayInfo(){
+        cout &lt;&lt; &quot;Programmer : &quot; &lt;&lt; name &lt;&lt; &quot;\n Salary : &quot; &lt;&lt; calculateSalary() &lt;&lt; endl;
+    }
+};
+
+
+int main(){
+
+    Manager m(&quot;Ram&quot;, 50000);
+    Programmer p(&quot;Shyam&quot;, 40000);
+
+    m.displayInfo();
+    p.displayInfo();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 6:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que6.cpp -o que6 } ; if ($?) { .\que6 }
+Manager : Ram
+ Salary: 60000
+Programmer : Shyam
+ Salary : 46000</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q7">
+<h3>7. Write a C++ program to create an abstract class Shape3D with abstract methods calculateVolume() and calculateSurfaceArea(). Create derived classes Sphere and Cube.</h3>
+<div class="answer-box">
+<h4>Answer 7:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Shape3D{
+
+public:
+    virtual int calculateVolume() = 0;
+    virtual int calculateSurfaceArea() = 0;
+};
+
+
+class Sphere : public Shape3D{
+
+private:
+    int radius;
+
+public:
+    Sphere(int r){
+        radius = r;
+    }
+
+    int calculateVolume(){
+        return (4*22 * radius * radius * radius) /(3*7);
+    }
+
+    int calculateSurfaceArea(){
+        return (4*22 * radius * radius)/7;
+    }
+};
+
+
+class Cube : public Shape3D{
+
+private:
+    int side;
+
+public:
+    Cube(int s){
+        side = s;
+    }
+
+    int calculateVolume(){
+        return side * side * side;
+    }
+
+    int calculateSurfaceArea(){
+        return 6 * side * side;
+    }
+};
+
+
+int main(){
+
+    Sphere sp(4);
+    Cube cb(5);
+
+    cout&lt;&lt;&quot;Sphere : \n&quot;;
+    cout &lt;&lt; &quot;Volume : &quot; &lt;&lt; sp.calculateVolume() &lt;&lt; endl;
+    cout &lt;&lt; &quot;Surface Area : &quot; &lt;&lt; sp.calculateSurfaceArea() &lt;&lt;endl;
+    
+    cout&lt;&lt;&quot;Cubr : \n&quot;;
+    cout &lt;&lt; &quot;Volume : &quot; &lt;&lt; cb.calculateVolume() &lt;&lt; endl;
+    cout &lt;&lt; &quot;Surface Area : &quot; &lt;&lt; cb.calculateSurfaceArea() &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 7:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que7.cpp -o que7 } ; if ($?) { .\que7 }
+Sphere :
+Volume : 268
+Surface Area : 201
+Cubr :
+Volume : 125
+Surface Area : 150</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q8">
+<h3>8. Write a C++ program to create an abstract class Vehicle with abstract methods startEngine() and stopEngine(). Create derived classes Car and Motorcycle.</h3>
+<div class="answer-box">
+<h4>Answer 8:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Vehicle{
+
+public:
+    virtual void startEngine() = 0;
+    virtual void stopEngine() = 0;
+
+};
+
+
+class Car : public Vehicle{
+
+public:
+
+    void startEngine(){
+        cout &lt;&lt; &quot;Car engine started \n&quot;;
+    }
+
+    void stopEngine(){
+        cout &lt;&lt; &quot;Car engine stopped \n&quot;;
+    }
+
+
+};
+
+
+class Motorcycle : public Vehicle{
+
+public:
+
+    void startEngine(){
+        cout &lt;&lt; &quot;Motorcycle engine started\n&quot;;
+    }
+
+    void stopEngine(){
+        cout &lt;&lt; &quot;Motorcycle engine stopped\n&quot;;
+
+    }
+
+};
+
+
+int main(){
+
+    Car car;
+
+    Motorcycle bike;
+
+    car.startEngine();
+    car.stopEngine();
+
+    bike.startEngine();
+    bike.stopEngine();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 8:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que8.cpp -o que8 } ; if ($?) { .\que8 }
+Car engine started
+Car engine stopped
+Motorcycle engine started
+Motorcycle engine stopped</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q9">
+<h3>9. Write a C++ program to create an abstract class Person with abstract methods eat() and exercise(). Create derived classes Athlete and LazyPerson.</h3>
+<div class="answer-box">
+<h4>Answer 9:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Person{
+
+public:
+    virtual void eat() = 0;
+    virtual void exercise() = 0;
+};
+
+
+class Athlete : public Person{
+
+
+public:
+    void eat(){
+        cout &lt;&lt; &quot;Athlete eats Good food \n&quot;;
+    }
+
+    void exercise(){
+
+        cout &lt;&lt; &quot;Athlete exercise daily\n&quot;;
+    }
+};
+
+
+class LazyPerson : public Person{
+
+public:
+
+    void eat(){
+        cout &lt;&lt; &quot;Lazy person eats bad food\n&quot;;
+    }
+
+    void exercise(){
+        cout &lt;&lt; &quot;Lazy person dont exercise\n&quot;;
+    }
+};
+
+
+int main(){
+
+    Athlete athlete;
+    LazyPerson lazy;
+
+    athlete.eat();
+    athlete.exercise();
+
+    lazy.eat();
+    lazy.exercise();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 9:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que9.cpp -o que9 } ; if ($?) { .\que9 }
+Athlete eats Good food
+Athlete exercise daily
+Lazy person eats bad food
+Lazy person dont exercise</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q10">
+<h3>10. Write a C++ program to create an abstract class Instrument with abstract methods play() and tune(). Create derived classes Glockenspiel and Violin.</h3>
+<div class="answer-box">
+<h4>Answer 10:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Instrument{
+
+public:
+
+    virtual void play() = 0;
+    virtual void tune() = 0;
+};
+
+
+class Glockenspiel : public Instrument{
+
+    public:
+
+    void play(){
+        cout &lt;&lt; &quot;Glockenspiel is playing \n&quot;;
+    }
+
+    void tune(){
+        cout &lt;&lt; &quot;Glockenspiel tuned \n&quot;;
+    }
+};
+
+
+class Violin : public Instrument{
+
+
+    public:
+    void play(){
+        cout &lt;&lt; &quot;Violin is playing \n&quot;;
+    }
+
+    void tune(){
+        cout &lt;&lt; &quot;Violin tuned\n&quot;;
+    }
+};
+
+
+int main(){
+
+    Glockenspiel g;
+    Violin v;
+
+    g.tune();
+    g.play();
+
+    v.tune();
+    v.play();
+
+    return 0;
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 10:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que10.cpp -o que10 } ; if ($?) { .\que10 }
+Glockenspiel tuned
+Glockenspiel is playing
+Violin tuned
+Violin is playing</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q11">
+<h3>11. Write a C++ program to create an abstract class Shape2D with abstract methods draw() and resize(). Create derived classes Rectangle and Circle.</h3>
+<div class="answer-box">
+<h4>Answer 11:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Shape2D{
+
+public:
+    virtual void draw() = 0;
+    virtual void resize(int value) = 0;
+};
+
+
+class Rectangle : public Shape2D{
+
+private:
+    int length;
+    int width;
+
+public:
+    Rectangle(int l, int w){
+        length = l;
+        width = w;
+    }
+
+    void draw(){
+        cout &lt;&lt; &quot;Rectangle : &quot; &lt;&lt; length &lt;&lt; &quot; x &quot; &lt;&lt; width &lt;&lt; endl;
+    }
+
+    void resize(int value){
+        length = length + value;
+        width = width + value;
+    }
+};
+
+
+class Circle : public Shape2D{
+
+private:
+    int radius;
+
+public:
+    Circle(int r){
+        radius = r;
+    }
+
+    void draw(){
+        cout &lt;&lt; &quot;Circle radius : &quot; &lt;&lt; radius &lt;&lt; endl;
+    }
+
+    void resize(int value){
+        radius = radius + value;
+    }
+};
+
+
+int main(){
+
+    Rectangle rect(10, 6);
+    Circle cir(7);
+
+    rect.draw();
+    cir.draw();
+
+    rect.resize(2);
+    cir.resize(3);
+
+    cout &lt;&lt; &quot;Resizing : \n&quot;;
+    rect.draw();
+    cir.draw();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 11:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que11.cpp -o que11 } ; if ($?) { .\que11 }
+Rectangle : 10 x 6
+Circle radius : 7
+Resizing :
+Rectangle : 12 x 8
+Circle radius : 10</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q12">
+<h3>12. Write a C++ program to create an abstract class GeometricShape with abstract methods area() and perimeter(). Create derived classes Triangle and Square.</h3>
+<div class="answer-box">
+<h4>Answer 12:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class GeometricShape{
+
+public:
+    virtual int area() = 0;
+    virtual int perimeter() = 0;
+};
+
+
+class Triangle : public GeometricShape{
+
+    private:    
+
+    int base;
+    int height;
+    int a;
+    int b;
+    int c;
+
+    public:
+
+
+    Triangle(int bs, int h, int x, int y, int z){
+        base = bs;
+        height = h;
+        a = x;
+        b = y;
+        c = z;
+    }
+
+    int area(){
+
+        return (base * height) / 2;
+    }
+
+    int perimeter(){
+        return a + b + c;
+
+    }
+};
+
+
+class Square : public GeometricShape{
+
+    private:
+        int side;
+
+    public:
+
+    Square(int s){
+        side = s;
+    }
+
+    int area(){
+        return side * side;
+    }
+
+    int perimeter(){
+        return 4 * side;
+    }
+
+};
+
+
+int main(){
+
+    Triangle t(6, 4, 6, 5, 4);
+    Square s(5);
+
+    cout &lt;&lt; &quot;Triangle : \n&quot;;
+    cout &lt;&lt; &quot;area : &quot; &lt;&lt; t.area() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;perimeter : &quot; &lt;&lt; t.perimeter() &lt;&lt; &quot;\n&quot;;
+    
+    
+    cout &lt;&lt; &quot;Square  : \n&quot;;
+    cout &lt;&lt; &quot;area : &quot; &lt;&lt; s.area() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;perimeter: &quot; &lt;&lt; s.perimeter() &lt;&lt; &quot;\n&quot;;
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 12:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que12.cpp -o que12 } ; if ($?) { .\que12 }
+Triangle :
+area : 12
+perimeter : 15
+Square  :
+area : 25
+perimeter: 20</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q13">
+<h3>13. Write a C++ program to create an abstract class Bird with abstract methods fly() and makeSound(). Create derived classes Eagle and Hawk.</h3>
+<div class="answer-box">
+<h4>Answer 13:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Bird{
+
+    public:
+
+    virtual void fly() = 0;
+    virtual void makeSound() = 0;
+
+};
+
+
+class Eagle : public Bird{
+
+    public:
+
+    void fly(){
+        cout &lt;&lt; &quot;Eagle flies \n&quot;;
+    }
+
+    void makeSound(){
+        cout &lt;&lt; &quot;Eagle makes sound\n&quot;;
+    }
+
+};
+
+
+class Hawk : public Bird{
+
+public:
+    void fly(){
+        cout &lt;&lt; &quot;Hawk flies\n&quot;;
+    }
+
+    void makeSound(){
+        cout &lt;&lt; &quot;Hawk makes sound\n&quot;;
+    }
+};
+
+
+int main(){
+
+    Eagle eagle;
+    Hawk hawk;
+
+    eagle.fly();
+    eagle.makeSound();
+
+    hawk.fly();
+    hawk.makeSound();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 13:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\10-Virtual_Functions_13\&quot; ; if ($?) { g++ que13.cpp -o que13 } ; if ($?) { .\que13 }
+Eagle flies
+Eagle makes sound
+Hawk flies
+Hawk makes sound</code></pre>
+</div>
+</div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

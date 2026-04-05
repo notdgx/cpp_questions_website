@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPERATOR OVERLOADING - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="../index.html">C++ Questions</a></div>
+      </nav>
+      
+
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>OPERATOR OVERLOADING</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Define a class Complex to represent complex numbers. Overload the + operator to add two complex numbers.</a></li>
+                    <li><a href="#q2">2. Create a class Fraction to represent fractions. Overload the + operator to add two fractions.</a></li>
+                    <li><a href="#q3">3. Define a class Matrix to represent matrices. Overload the * operator to multiply two matrices.</a></li>
+                    <li><a href="#q4">4. Implement a class String to represent strings. Overload the + operator to concatenate two strings.</a></li>
+                    <li><a href="#q5">5. Define a class Date to represent dates. Overload the &lt; operator to compare two dates.</a></li>
+                    <li><a href="#q6">6. Implement a class Money to represent money. Overload the + operator to add two amounts of money.</a></li>
+                    <li><a href="#q7">7. Create a class Rectangle to represent rectangles. Overload the == operator to check if two rectangles are equal.</a></li>
+                    <li><a href="#q8">8. Define a class Time to represent time. Overload the &lt;&lt; operator to display the time in HH:MM format.</a></li>
+                </ul>
+            </div>
+
+<div class="question-section" id="q1">
+<h3>1. Define a class Complex to represent complex numbers. Overload the + operator to add two complex numbers.</h3>
+<div class="answer-box">
+<h4>Answer 1:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Complex{
+
+private:
+    int real;
+    int imag;
+
+public:
+    Complex(int r = 0, int i = 0){
+        real = r;
+        imag = i;
+    }
+
+    Complex operator+(Complex other){
+
+        Complex temp;
+        temp.real = real + other.real;
+        temp.imag = imag + other.imag;
+        return temp;
+    }
+
+    void show(){
+        cout &lt;&lt; real &lt;&lt; &quot; + &quot; &lt;&lt; imag &lt;&lt; &quot;i\n&quot;;
+    }
+};
+
+
+int main(){
+
+    Complex c1(3, 4);
+    Complex c2(5, 6);
+
+    Complex c3 = c1 + c2;
+
+    cout &lt;&lt; &quot;Result :   &quot;;
+    c3.show();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 1:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\10-Virtual_Functions_13&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que1.cpp -o que1 } ; if ($?) { .\que1 }
+Result :   8 + 10i</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q2">
+<h3>2. Create a class Fraction to represent fractions. Overload the + operator to add two fractions.</h3>
+<div class="answer-box">
+<h4>Answer 2:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int gcdValue(int a, int b){
+
+    if (a &lt; 0){
+        a = -a;
+    }
+
+    if (b &lt; 0){
+        b = -b;
+    }
+
+    while (b != 0){
+        int rem = a % b;
+        a = b;
+        b = rem;
+    }
+
+    return a;
+}
+
+
+class Fraction{
+
+private:
+    int num;
+    int den;
+
+public:
+    Fraction(int n = 0, int d = 1){
+        num = n;
+        den = d;
+    }
+
+    Fraction operator+(Fraction other){
+        Fraction temp;
+        temp.num = num * other.den + other.num * den;
+        temp.den = den * other.den;
+
+        int g = gcdValue(temp.num, temp.den);
+        if (g != 0){
+            temp.num = temp.num / g;
+            temp.den = temp.den / g;
+        }
+
+        return temp;
+    }
+
+    void show(){
+        cout &lt;&lt; num &lt;&lt; &quot;/&quot; &lt;&lt; den &lt;&lt; &quot;\n&quot;;
+    }
+};
+
+
+int main(){
+
+    Fraction f1(1, 2);
+    Fraction f2(3, 4);
+
+    Fraction f3 = f1 + f2;
+
+    cout &lt;&lt; &quot;Result: &quot;;
+    f3.show();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 2:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que2.cpp -o que2 } ; if ($?) { .\que2 }
+Result: 5/4</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q3">
+<h3>3. Define a class Matrix to represent matrices. Overload the * operator to multiply two matrices.</h3>
+<div class="answer-box">
+<h4>Answer 3:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Matrix{
+
+ private:
+    int a[2][2];
+
+public:
+
+    void input(){
+        cout &lt;&lt; &quot;Enter 2x2 matrix : \n&quot;;
+        
+        for (int i = 0; i &lt; 2; i++){
+            
+            for (int j = 0; j &lt; 2; j++){
+                cout &lt;&lt; &quot;Enter element at (&quot;&lt;&lt;i&lt;&lt;&quot; , &quot;&lt;&lt;j&lt;&lt;&quot;) : &quot;;
+                cin &gt;&gt; a[i][j];
+            }
+
+        }
+    }
+
+    // 2 2
+    // 2 2
+    
+    // 4 4 
+    // 4 4 
+
+    Matrix operator*(Matrix other){
+        Matrix temp;
+
+        for (int i = 0; i &lt; 2; i++){
+            for (int j = 0; j &lt; 2; j++){
+                temp.a[i][j] = 0;
+
+                for (int k = 0; k &lt; 2; k++){
+                    temp.a[i][j] += a[i][k] * other.a[k][j];
+                }
+            }
+        }
+
+        return temp;
+    }
+
+    void show(){
+        for (int i = 0; i &lt; 2; i++){
+            for (int j = 0; j &lt; 2; j++){
+                cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
+            }
+
+            cout &lt;&lt; &quot;\n&quot;;
+        }
+    }
+};
+
+
+int main(){
+
+    Matrix m1;
+    Matrix m2;
+
+    m1.input();
+    m2.input();
+
+    Matrix m3 = m1 * m2;
+
+    cout &lt;&lt; &quot;Result matrix :&quot;;
+    m3.show();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 3:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\09-Operator_Overloading_8&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que3.cpp -o que3 } ; if ($?) { .\que3 }
+Enter 2x2 matrix :
+Enter element at (0 , 0) : 2
+Enter element at (0 , 1) : 2
+Enter element at (1 , 0) : 2
+Enter element at (1 , 1) : 2
+Enter 2x2 matrix :
+Enter element at (0 , 0) : 4
+Enter element at (0 , 1) : 4
+Enter element at (1 , 0) : 4
+Enter element at (1 , 1) : 4
+Result matrix :16 16
+16 16</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q4">
+<h3>4. Implement a class String to represent strings. Overload the + operator to concatenate two strings.</h3>
+<div class="answer-box">
+<h4>Answer 4:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+class StringClass{
+
+private:
+    string text;
+
+public:
+    StringClass(string t = &quot;&quot;){
+        text = t;
+    }
+
+    StringClass operator+(StringClass other){
+        StringClass temp;
+        temp.text = text + other.text;
+        return temp;
+    }
+
+    void show(){
+        cout &lt;&lt; text ;
+    }
+};
+
+
+int main(){
+
+    StringClass s1(&quot;Hello&quot;);
+    StringClass s2(&quot;World&quot;);
+
+    StringClass s3 = s1 + s2;
+
+    cout &lt;&lt; &quot;Concatenated strings : &quot;;
+    s3.show();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 4:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\09-Operator_Overloading_8&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que4.cpp -o que4 } ; if ($?) { .\que4 }
+Concatenated strings : HelloWorld</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q5">
+<h3>5. Define a class Date to represent dates. Overload the &lt; operator to compare two dates.</h3>
+<div class="answer-box">
+<h4>Answer 5:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Date{
+
+    private:
+
+        int day;
+        int month;
+        int year;
+
+    public: 
+
+
+    Date(int d = 1, int m = 1, int y = 2000){
+        day = d;
+        month = m;
+        year = y;
+    }
+
+    bool operator&lt;(Date other){
+        if (year != other.year){
+            return year &lt; other.year;
+        }
+
+        if (month != other.month){
+            return month &lt; other.month;
+        }
+
+        return day &lt; other.day;
+    }
+
+};
+
+
+int main(){
+
+    Date d1(10,5,2024);
+    Date d2(15,8,2024);
+
+    if (d1 &lt; d2){
+        cout &lt;&lt; &quot;d1 is before d2&quot;;
+    }
+
+    else{
+        cout &lt;&lt; &quot;d1 is after d2\n&quot;;
+    }
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 5:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\09-Operator_Overloading_8&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que5.cpp -o que5 } ; if ($?) { .\que5 }
+d1 is before d2</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q6">
+<h3>6. Implement a class Money to represent money. Overload the + operator to add two amounts of money.</h3>
+<div class="answer-box">
+<h4>Answer 6:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Money{
+
+private:
+    float money;
+
+public:
+    Money(float m = 0){
+        money = m ;
+    }
+
+    Money operator+(Money other){
+        Money temp;
+        temp.money = money + other.money;
+        return temp;
+    }
+
+    void show(){
+        cout &lt;&lt; &quot;Money is : &quot;&lt;&lt; money ;
+    }
+};
+
+
+int main(){
+
+    Money m1(34);
+    Money m2(56.9);
+
+    Money m3 = m1 + m2;
+
+    cout &lt;&lt; &quot;Total money: &quot;;
+    m3.show();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 6:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\09-Operator_Overloading_8&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que6.cpp -o que6 } ; if ($?) { .\que6 }
+Total money: Money is : 90.9</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q7">
+<h3>7. Create a class Rectangle to represent rectangles. Overload the == operator to check if two rectangles are equal.</h3>
+<div class="answer-box">
+<h4>Answer 7:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Rectangle{
+
+    private:
+
+        int length;
+        int width;
+
+    public:
+
+    Rectangle(int l = 0, int w = 0){
+        length = l;
+        width = w;
+    }
+
+    bool operator==(Rectangle other){
+        if (length == other.length &amp;&amp; width == other.width){
+            return true;
+        }
+
+        return false;
+    }
+};
+
+
+int main(){
+
+    Rectangle r1(10, 5) ,r2(10, 5) ;
+
+    if (r1 == r2){
+        cout &lt;&lt; &quot;Rectangles equal&quot;;
+
+    }
+
+    else{
+        cout &lt;&lt; &quot;Rectangles not equal&quot;;
+    }
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 7:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\09-Operator_Overloading_8&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que7.cpp -o que7 } ; if ($?) { .\que7 }
+Rectangles equal</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q8">
+<h3>8. Define a class Time to represent time. Overload the &lt;&lt; operator to display the time in HH:MM format.</h3>
+<div class="answer-box">
+<h4>Answer 8:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Time{
+
+private:
+    int hour;
+    int minute;
+
+public:
+    Time(int h = 0, int m = 0){
+        hour = h;
+        minute = m;
+    }
+
+    friend ostream&amp; operator&lt;&lt;(ostream &amp;out, Time t){
+        if (t.hour &lt; 10){
+            out &lt;&lt; &quot;0&quot;;
+        }
+
+        out &lt;&lt; t.hour &lt;&lt; &quot; : &quot;;
+
+        if (t.minute &lt; 10){
+            out &lt;&lt; &quot;0&quot;;
+        }
+
+        out &lt;&lt; t.minute;
+        return out;
+    }
+};
+
+
+int main(){
+
+    Time t1(9, 57);
+
+    cout &lt;&lt; &quot;Time: &quot; &lt;&lt; t1 ;
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 8:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\09-Operator_Overloading_8&gt; cd &quot;e:\dddddddd\CPP_Que\09-Operator_Overloading_8\&quot; ; if ($?) { g++ que8.cpp -o que8 } ; if ($?) { .\que8 }
+Time: 09 : 57</code></pre>
+</div>
+</div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

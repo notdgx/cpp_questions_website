@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITERATIVE CONTROL STRUCTURE (LOOPS) - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="#">C Language Questions</a></div>
+      </nav>
+      
+
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>ITERATIVE CONTROL STRUCTURE (LOOPS)</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Enter a number from the user and find out the binary of that number ?</a></li>
+                    <li><a href="#q2">2. Enter a number from the user and check that the number is divisible by any prime number or not ?</a></li>
+                    <li><a href="#q3">3. Enter a number from the user and check it is a prime number or not ?</a></li>
+                    <li><a href="#q4">4. Enter a number from the user and print all digit of the number in separate line ?</a></li>
+                    <li><a href="#q5">5. Write a program to print your name 1 lakh times ?</a></li>
+                    <li><a href="#q6">6. Write a program to print a series 1 to 1 lakh ?</a></li>
+                    <li><a href="#q7">7. Enter a number from the user and print the series from 1 to that number ?</a></li>
+                    <li><a href="#q8">8. Enter a number from the user and print that number 100 time ?</a></li>
+                    <li><a href="#q9">9. Write a program print all the odd number between 1 to 100 ?</a></li>
+                    <li><a href="#q10">10. Write a program print the table of 4 in the format given as below (till 20)? 4*1=4 and so on</a></li>
+                    <li><a href="#q11">11. Enter the number from user and reverse the number?</a></li>
+                    <li><a href="#q12">12. Enter a number from the user if the user enter 1 then you will perform addition operation by entering 2 number from user add it and display answer. if user enter 2 then subtract or if user enter 3 then multiply or if user enter 4 then divide or if user enter 5 then modulo or if any other number then print invalid .if user want to quit the program then user will enter Q. ?</a></li>
+                    <li><a href="#q13">13. Enter the number from user and check its palindrome or not?</a></li>
+                    <li><a href="#q14">14. Enter two numbers from users, one is base and second is power. Write the result ?</a></li>
+                    <li><a href="#q15">15. Enter a number from user and print first digit of number ?</a></li>
+                    <li><a href="#q16">16. Enter a number from user and print total from 0 to that number ?</a></li>
+                    <li><a href="#q17">17. Enter a number from user and find out factorial of that number ?</a></li>
+                    <li><a href="#q18">18. Enter two numbers from user and print range from first number to second number ?</a></li>
+                    <li><a href="#q19">19. Enter password from user maximum 20 digits / character press enter key if you want to exit ?</a></li>
+                    <li><a href="#q20">20. Write a program to print the counting 1 to 100 with one second delay ?</a></li>
+                    <li><a href="#q21">21. Write a program to find out the Fibonacci series/ 1 to 100 (like 0 1 1 2 3 5 8 13………..) ?</a></li>
+                    <li><a href="#q22">22. Enter a character from user and that character should be alphabet ?</a></li>
+                    <li><a href="#q23">23. Check numbers from user is palindrome or not ?</a></li>
+                    <li><a href="#q24">24. Enter a number from user and check it is Armstrong number or not ?</a></li>
+                    <li><a href="#q25">25. Enter a number from user and check it is Armstrong number or not ?</a></li>
+                </ul>
+            </div>
+
+            
+<div id="q1" class="question-section">
+    <h3>1. Enter a number from the user and find out the binary of that number</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, b[32], i = 0;
+    printf("Enter the number : "); 
+    scanf("%d", &n);
+    while (n > 0) {
+        b[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+    for (i = i - 1; i >= 0; i--)
+        printf("%d", b[i]);
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f1.c -o f1; .\f1
+Enter the number : 344
+101011000</code></pre>
+    </div>
+</div>
+
+
+<div id="q2" class="question-section">
+    <h3> 2. </h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>
+
+
+        </code></pre>
+    </div>
+</div>
+
+<div id="q3" class="question-section">
+    <h3>3. Enter a number from the user and check it is a prime number or not</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main() {
+    int n, count = 0, i;
+    printf("enter the number :");
+    scanf("%d", &n);
+
+    if (n &lt;= 1)
+        printf("%d is not a prime number", n);
+    else
+        for (i = 1; i &lt;= n; i++) {
+            if (n % i == 0)
+                count++;
+        }
+
+    if (count &gt; 2)
+        printf("%d is not a prime number", n);
+    else
+        printf("%d is a prime number.", n);
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f3.c -o f3; .\f3
+enter the number :43
+43 is a prime number.</code></pre>
+    </div>
+</div>
+
+
+<div id="q4" class="question-section">
+    <h3>4. Enter a number from the user and print all digits of the number in separate lines</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, r, rev = 0;
+    printf("Enter the number : ");
+    scanf("%d", &n);
+    while (n &gt; 0) {
+        r = n % 10;
+        rev = rev * 10 + r;
+        n = n / 10;
+    }
+    while (rev &gt; 0) {
+        r = rev % 10;
+        printf("%d\n", r);
+        rev = rev / 10;
+    }
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f4.c -o f4; .\f4
+Enter the number : 232323
+2
+3
+2
+3
+2
+3</code></pre>
+    </div>
+</div>
+
+
+<div id="q5" class="question-section">
+  <h3>5. Write a program to print your name 1 lakh times ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+    char name[20];
+    printf("enetr your name :");
+    gets(name);
+
+    for(i = 1; i &lt;= 100000; i++)
+    {
+        printf("%s\n", name);
+    }
+    return 0;
+}</code></pre>
+  </div>
+  <div class="answer-box">
+    <h4>Output :</h4>
+    <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f5.c -o f5; .\f5
+enetr your name :daisy
+daisy
+....
+daisy</code></pre>
+  </div>
+</div>
+
+<div id="q6" class="question-section">
+  <h3>6. Write a program to print a series 1 to 1 lakh ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main() {
+    int i;
+    for(i = 1; i &lt;= 100000; i++)
+        printf("%d\n", i);
+
+    return 0;
+}</code></pre>
+  </div>
+  <div class="answer-box">
+    <h4>Output :</h4>
+    <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f6.c -o f6; .\f6
+1
+2
+....
+100000</code></pre>
+  </div>
+</div>
+
+
+<div id="q7" class="question-section">
+  <h3>7. Enter a number from the user and print the series from 1 to that number ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main() {
+    int x, i;
+    printf("enter the number :");
+    scanf("%d", &x);
+  
+    for(i = 1; i &lt;= x; i++) {
+        printf("%d\n", i);
+    }
+    return 0;
+}</code></pre>
+  </div>
+  <div class="answer-box">
+    <h4>Output :</h4>
+    <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f7.c -o f7; .\f7
+enter the number :6 
+1
+2
+3
+4
+5
+6</code></pre>
+  </div>
+</div>
+
+
+
+<div id="q8" class="question-section">
+  <h3>8. Enter a number from the user and print that number 100 times ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main() {
+    int x, i;
+    printf("enter the number :");
+    scanf("%d", &x);
+
+    for(i = 1; i &lt;= 100; i++) {
+        printf("%d\n", x);
+    }
+    return 0;
+}</code></pre>
+  </div>
+  <div class="answer-box">
+    <h4>Output :</h4>
+    <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f8.c -o f8; .\f8
+enter the number :3
+3
+3
+3
+3</code></pre>
+  </div>
+</div>
+
+
+<div id="q9" class="question-section">
+  <h3>9. Write a program to print all the odd numbers between 1 to 100 ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main() {
+    int i;
+    for(i = 1; i &lt;= 100; i += 2) {
+        printf("%d\n", i);
+    }
+    return 0;
+}</code></pre>
+  </div>
+  <div class="answer-box">
+    <h4>Output :</h4>
+    <pre><code>PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f9.c -o f9; .\f9
+1
+3
+5
+7
+9
+....
+99</code></pre>
+  </div>
+</div>
+
+
+<div id="q10" class="question-section">
+  <h3>10 . Write a program print the table of 4 in the format given as below (till 20)? 4*1=4 and so on</h3>
+  <div class="answer-box">
+    <pre><code>#include&lt;stdio.h&gt;
+
+
+int main(){
+    int x=4,i=1,table;
+    for(i=1;i&lt;=10;i++)
+    {
+        table=x*i;
+        printf("%d\n",table);
+    }
+    return 0;
+}
+
+
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f10.c -o f10; .\f10
+4
+8
+12
+16
+20
+24
+28
+32
+36
+40</code></pre>
+  </div>
+</div>
+
+<div id="q11" class="question-section">
+  <h3>11 . Enter the number from user and reverse the number?</h3>
+  <div class="answer-box">
+    <pre><code>#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+
+int main(){
+    int x,remainder;
+
+    printf("enter the number :");
+    scanf("%d",&x);
+     while(x!=0)
+     {
+        remainder=x%10;
+        printf("%d\n",remainder);
+        x=x/10;
+     }
+     return 0;
+}
+
+
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f11.c -o f11; .\f11
+enter the number :34334
+4
+3
+3
+4
+3</code></pre>
+  </div>
+</div>
+
+
+<div id="q12" class="question-section">
+  <h3>12 . Enter a number from the user if the user enter 1 then you will perform addition operation by entering 2 number from user add it and display answer.</h3>
+  <div class="answer-box">
+    <pre><code>// if user enter 2 then subtract or if user enter 3 then multiply or if user enter 4 then divide or if user enter 5 then modulo or if any other number then print invalid .
+// if user want to quit the program then user will enter Q. ?
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+
+int main(){
+    int x;
+    int num1,num2;
+    printf("enter the to perform operation :");
+    scanf("%d",&x);
+    printf("enter first numbwrs :");
+    scanf("%d",&num1);
+
+    printf("enter second numbwrs :");
+    scanf("%d",&num2);
+
+    switch(x)
+    {
+        case 1: printf("the addition of the number is %d",num1+num2);
+        break;
+        case 2:printf("the subtraction of the number is %d",num1-num2);
+        break;
+        case 3:printf("the multiplication of the number is %d",num1*num2);
+        break;
+        case 4:printf("the division of the number is %d",num1/num2);
+        break;
+    }
+    return 0;
+}
+
+
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f12.c -o f12; .\f12
+enter the to perform operation :3
+enter first numbwrs :232
+enter second numbwrs :33
+the multiplication of the number is 7656</code></pre>
+  </div>
+</div>
+
+
+<div id="q13" class="question-section">
+  <h3>13 . Enter the number from user and check its palindrome or not?</h3>
+  <div class="answer-box">
+    <pre><code>#include&lt;stdio.h&gt;
+
+int main(){
+    int n,c,s=0,r;
+    printf("enter the number :");
+    scanf("%d",&n);
+
+    c=n;
+    while(n>0){
+        r=n%10;
+        s=r+(s*10);
+        n/=10;
+    }
+
+    if(c==s)
+        printf("yes the number is palindrom number ");
+    else
+        printf("the number is not the palindrom number ");
+
+    return 0;
+}
+
+
+
+OUTPUT
+
+enter the number :12342
+the number is not the palindrom number 
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f13.c -o f13; .\f13
+enter the number :121
+yes the number is palindrom number </code></pre>
+  </div>
+</div>
+
+<div id="q14" class="question-section">
+  <h3>14. Enter two numbers from users, one is base and second is power. Write the result ?</h3>
+  <div class="answer-box">
+    <pre><code>#include&lt;stdio.h&gt;
+
+int main(){
+    int x,y,result=1;
+    printf("enter the base number :");
+    scanf("%d",&x);
+
+    printf("enter the power number :");
+    scanf("%d",&y);
+    if(y==0)
+        printf("the value is 1.");
+    else
+        while(y>0)
+        {
+            result = result * x;
+            y--;
+        }
+    printf("Result is  %d",result);
+ 
+    return 0;
+}
+
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f14.c -o f14; .\f14
+enter the base number :23
+enter the power number :
+3
+Result is  12167</code></pre>
+  </div>
+</div>
+
+
+<div id="q15" class="question-section">
+  <h3>15. Enter a number from user and print first digit of number ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    if (number &lt; 0) {
+        number = -number; 
+    } 
+    while (number &gt;= 10) {
+        number /= 10;
+    }
+
+    printf("The first digit is: %d\n", number);
+
+    return 0;
+}
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f15.c -o f15; .\f15
+Enter a number: 2345
+The first digit is: 2</code></pre>
+  </div>
+</div>
+
+
+<div id="q16" class="question-section">
+  <h3>16. Enter a number from user and print total from 0 to that number ?</h3>
+  <div class="answer-box">
+    <pre><code>#include&lt;stdio.h&gt;
+
+int main(){
+    int x,sum=0,i;
+    printf("enter the number :");
+    scanf("%d",&x);
+
+    for(i=0;i&lt;=x;i++)
+    {
+        sum=sum+i;
+    }
+    printf("%d",sum);
+    return 0;
+}
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f16.c -o f16; .\f16
+enter the number :234
+27495</code></pre>
+  </div>
+</div>
+
+
+
+<div id="q17" class="question-section">
+  <h3>17. Enter a number from user and find out factorial of that number ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num;
+    int factorial = 1; 
+
+    printf("Enter the number : ");
+    scanf("%d", &num);
+
+    if (num &lt; 0) {
+        printf("Factorial is not defined for negative numbers");
+    } else {
+        for (int i = 1; i &lt;= num; i++) {
+            factorial *= i;
+        }
+        printf("Factorial of %d is :  %d", num, factorial);
+    }
+
+    return 0;
+}
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f17.c -o f17; .\f17
+Enter the number : 4
+Factorial of 4 is :  24</code></pre>
+  </div>
+</div>
+
+
+<div id="q18" class="question-section">
+  <h3>18. Enter two numbers from user and print range from first number to second number ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main(){
+    int x,y,range=1,i;
+    printf("enter the first number :");
+    scanf("%d",&x);
+
+    printf("enter the second number :");
+    scanf("%d",&y);
+    for(i=x;i&lt;=y;i++)
+    {
+        range++;
+    }
+    printf("the range from %d to %d is %d",x,y,range);
+    return 0;
+}
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f18.c -o f18; .\f18
+enter the first number :34
+enter the second number :56
+the range from 34 to 56 is 24</code></pre>
+  </div>
+</div>
+
+<div id="q19" class="question-section">
+  <h3>19. Enter password from user maximum 20 digits / character press enter key if you want to exit ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main() {
+    char ch;
+    int i = 0;
+
+    printf("Enter the password (press Enter to exit):");
+
+    while (1) {
+        ch = getche();     
+        if (ch == 13)        
+            break;
+        i++;
+        if (i >= 20)
+            break;
+    }
+
+    return 0;
+}
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f19.c -o f19; .\f19
+Enter the password (press Enter to exit):password</code></pre>
+  </div>
+</div>
+
+
+
+<div id="q20" class="question-section">
+  <h3>20. Write a program to print the counting 1 to 100 with one second delay ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;dos.h&gt;
+
+int main()
+{
+    int i;
+    for(i=1;i&lt;=100;)
+    {
+        i++;
+    }
+    printf("%d\n",i);
+    delay(1000);
+    return 0;
+}
+
+OUTPUTS
+
+...</code></pre>
+  </div>
+</div>
+
+<div id="q21" class="question-section">
+  <h3>21. Write a program to find out the Fibonacci series / 1 to 100 (like 0 1 1 2 3 5 8 13………..)?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int x, a = 0, b = 1, c, i; 
+    printf("enter the number of terms :");
+    scanf("%d", &x);
+
+    for(i = 1; i &lt;= x; i++)
+    {
+        printf("%d  ", a);
+        c = a + b;
+        a = b;
+        b = c;
+    } 
+    return 0;
+}
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f21.c -o f21; .\f21
+enter the numebr of term :5
+0  1  1  2  3</code></pre>
+  </div>
+</div>
+
+
+
+<div id="q22" class="question-section">
+  <h3>22. Enter a character from user and that character should be alphabet?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char ch;
+    printf("Enter the char : ");
+    scanf("%c", &ch);
+    if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122))
+        printf("alphabet");
+    else
+        printf("Not alphabet");
+    return 0;
+}
+
+OUTPUT
+
+PS E:\dx\Coding\C_4205_BCA\source\4_iterate_control_structure_loops&gt; gcc f22.c -o f22; .\f22
+Enter the char : 3
+Not alphabet</code></pre>
+  </div>
+</div>
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

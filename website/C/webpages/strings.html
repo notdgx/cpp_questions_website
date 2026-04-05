@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRINGS - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="#">C Language Questions</a></div>
+      </nav>
+      
+
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>STRINGS</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Enter a string from user and convert in uppercase ?</a></li>
+                    <li><a href="#q2">2. Enter a string from user and convert into lowercase ?</a></li>
+                    <li><a href="#q3">3. Enter a string from user and convert into sentence case ?</a></li>
+                    <li><a href="#q4">4. Enter a string from user and convert into title case ?</a></li>
+                    <li><a href="#q5">5. Enter a string from user and convert into toggle case ?</a></li>
+                    <li><a href="#q6">6. Enter a string from user and final length of the string ?</a></li>
+                    <li><a href="#q7">7. Enter a string from user and compare those string ?</a></li>
+                    <li><a href="#q8">8. Enter a string from user and concatenate the string ?</a></li>
+                    <li><a href="#q9">9. Enter a string from user and copy that string into another string ?</a></li>
+                    <li><a href="#q10">10. Enter the string from user ,enter a number from user ,if the user enter 0 then you will print first character of string ,if the user enter 1 then you will print second character of string ,if user enter 2 then you will print third character of string ,if user enter 3 then you point fourth character of string and if out of string then you will print out of bound ?</a></li>
+                    <li><a href="#q11">11. Enter the string from user and print each character in new line ?</a></li>
+                    <li><a href="#q12">12. Enter the string from user and copy reverse order into another string ?</a></li>
+                    <li><a href="#q13">13. Enter two string from user and print difference each character ?</a></li>
+                    <li><a href="#q14">14. Enter the string from user and enter a character , it is exist or not ?</a></li>
+                    <li><a href="#q15">15. Enter the string from user and enter a character if it is exist then print the bound number ?</a></li>
+                    <li><a href="#q16">16. Enter the string from user and count all vowels ?</a></li>
+                    <li><a href="#q17">17. Enter the string from user and enter bound number and print character on that bound ?</a></li>
+                    <li><a href="#q18">18. String palindrome example (using reverse) ?</a></li>
+                    <li><a href="#q19">19. Enter the data from user the data consist of roll no. ,name ,class , marks of 5 subjects ?</a></li>
+                </ul>
+            </div>
+
+<div id="q1" class="question-section">
+    <h3>1. Enter a string from user and convert in uppercase?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[20]; 
+    int len;
+    printf("Enter the String :");
+    gets(str);
+    len = strlen(str);
+
+    for (int i = 0; i &lt; len; i++){
+        if (str[i] &gt;= 97 &amp;&amp; str[i] &lt;= 122)
+            str[i] = str[i] - 32;
+    }
+
+    printf("Now the string is %s", str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f1.c -o f1; .\f1
+Enter the String :hello world
+Now the string is HELLO WORLD
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q2" class="question-section">
+    <h3>2. Enter a string from user and convert into lowercase?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[20]; 
+    int len;
+    printf("Enter the String :");
+    gets(str);
+    len = strlen(str);
+
+    for (int i = 0; i &lt; len; i++){
+        if (str[i] &gt;= 65 &amp;&amp; str[i] &lt;= 90)
+            str[i] = str[i] + 32;
+    }
+
+    printf("Now the string is %s", str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f2.c -o f2; .\f2
+Enter the String :HELLOO
+Now the string is helloo
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q3" class="question-section">
+    <h3>3. Enter a string from user and convert into sentence case?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[20];
+    int len;
+    printf("Enter the String :");
+    gets(str);
+    len = strlen(str);
+
+    if (str[0] &gt;= 97 &amp;&amp; str[0] &lt;= 122)
+        str[0] -= 32;
+
+    for (int i = 1; i &lt; len; i++){
+        if (str[i] &gt;= 65 &amp;&amp; str[i] &lt;= 90)
+            str[i] = str[i] + 32;
+    }
+
+    printf("The String in sentence case is : %s", str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f3.c -o f3; .\f3
+Enter the String :APPLE ManGO ICe
+The String in sentence case is : Apple mango ice
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q4" class="question-section">
+    <h3>4. Enter a string from user and convert into title case?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[20];
+    int len, flag = 1;
+    printf("Enter the String :");
+    gets(str);
+    len = strlen(str);
+
+    for (int i = 0; i &lt; len; i++){
+        if (str[i] == 32)
+            flag = 1;
+        
+        if (flag &amp;&amp; (str[i] &gt;= 97 &amp;&amp; str[i] &lt;= 122)){
+            str[i] -= 32;
+            flag = 0;
+        }
+        else if (!flag &amp;&amp; (str[i] &gt;= 65 &amp;&amp; str[i] &lt;= 90))
+            str[i] = str[i] + 32;
+    }
+
+    printf("The String in Title case is : %s", str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f4.c -o f4; .\f4
+Enter the String :apple mango ice
+The String in Title case is : Apple Mango Ice
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q5" class="question-section">
+    <h3>5. Enter a string from user and convert into toggle case?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[20];
+    int len;
+    printf("Enter the String :");
+    gets(str);
+    len = strlen(str);
+
+    for (int i = 0; i &lt; len; i++){ 
+        if (str[i] &gt;= 97 &amp;&amp; str[i] &lt;= 122)
+            str[i] -= 32;
+        else if (str[i] &gt;= 65 &amp;&amp; str[i] &lt;= 90)
+            str[i] += 32;
+    }
+
+    printf("The String in Toggle case is : %s", str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f5.c -o f5; .\f5
+Enter the String :APPle ManGO ICe
+The String in Toggle case is : appLE mANgo icE
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q6" class="question-section">
+    <h3>6. Enter a string from user and find length of the string?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[20];
+    printf("Enter the String :");
+    gets(str);
+    printf("The String Length is : %d", strlen(str));
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f6.c -o f6; .\f6
+Enter the String :Apple Mango ice
+The String Length is : 15
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q7" class="question-section">
+    <h3>7. Enter two strings from user and compare those strings?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str1[50], str2[50];
+
+    printf("Enter First String : ");
+    gets(str1);
+    printf("Enter Second String : ");
+    gets(str2);
+
+    if (strcmp(str1, str2) == 0)
+        printf("Both strings are SAME");
+    else
+        printf("Strings are DIFFERENT");
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f7.c -o f7; .\f7
+Enter First String : Apple
+Enter Second String : Appleee
+Strings are DIFFERENT
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q8" class="question-section">
+    <h3>8. Enter a string from user and concatenate the string?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str1[100], str2[50];
+
+    printf("Enter First String : ");
+    gets(str1);
+
+    printf("Enter Second String : ");
+    gets(str2);
+
+    strcat(str1, str2);
+
+    printf("After Concatenation : %s", str1);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f8.c -o f8; .\f8
+Enter First String : Hello Worls
+Enter Second String : Apple Mango
+After Concatenation : Hello WorlsApple Mango
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q9" class="question-section">
+    <h3>9. Enter a string from user and copy that string into another string?</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[100], cpy[100];
+
+    printf("Enter Thr String To be COPIED : ");
+    gets(str);
+
+    strcpy(cpy, str);
+
+    printf("Copy of String 1 is : %s", cpy);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f9.c -o f9; .\f9
+Enter Thr String To be COPIED : Apple Mango
+Copy of String 1 is : Apple Mango
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q10" class="question-section">
+    <h3>10. Enter the string from user, enter a number from user, if the user enters 0 then print first character of string, if 1 then print second, if 2 then third, if 3 then fourth, and if out of range then print “Out of Bound”?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[100];
+    int n, len;
+
+    printf("Enter the String : ");
+    gets(str);
+
+    len = strlen(str);
+
+    printf("Enter the Number : ");
+    scanf("%d", &n);
+
+    if (n >= 0 && n < len)
+        printf("Character at position %d is : %c", n, str[n]);
+    else
+        printf("Out of Bound");
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f10.c -o f10; .\f10
+Enter the String : Apple Mango
+Enter the Number : 6
+Character at position 6 is : M
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q11" class="question-section">
+    <h3>11. Enter the string from user and print each character in new line ?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[50]; 
+    int len;
+    printf("Enter the String :");
+    gets(str);
+    len = strlen(str);
+    for (int i = 0; i &lt; len; i++) {
+        printf("%c\n", str[i]);
+    }
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f11.c -o f11; .\f11
+Enter the String :ApplE
+A
+p
+p
+l
+E
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q12" class="question-section">
+    <h3>12. Enter the string from user and copy reverse order into another string ?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str[50], revcpy[50]; 
+    int len;
+    printf("Enter the String :");
+    gets(str);
+    len = strlen(str);
+    
+    for (int i = 0; i &lt; len; i++) {
+        revcpy[i] = str[len - 1 - i];
+    }
+    revcpy[len] = 0;
+    printf("The REVERSE of String that you entered is : %s", revcpy);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f12.c -o f12; .\f12
+Enter the String :APPle MangO
+The REVERSE of String that you entered is : OgnaM elPPA
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q13" class="question-section">
+    <h3>13. Enter two string from user and print difference each character ?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    char str1[100], str2[100];
+    int len1, len2, minlen;
+
+    printf("Enter First String : ");
+    gets(str1);
+    len1 = strlen(str1);
+    printf("Enter Second String : ");
+    gets(str2);
+    len2 = strlen(str2);
+    minlen = len1 &lt; len2 ? len1 : len2;
+
+    for (int i = 0; i &lt; minlen; i++){
+        printf("\nThe ASCII difference of %c and %c is : %d", str1[i], str2[i], str1[i] - str2[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f13.c -o f13; .\f13
+Enter First String : Apple
+Enter Second String : Mangooo
+
+The ASCII difference of A and M is : -12
+The ASCII difference of p and a is : 15
+The ASCII difference of p and n is : 2
+The ASCII difference of l and g is : 5
+The ASCII difference of e and o is : -10
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q14" class="question-section">
+    <h3>14. Enter the string from user and enter a character, it is exist or not ?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[100], ch;
+    int len, found = 0;
+
+    printf("Enter The String : ");
+    gets(str);
+    len = strlen(str);
+
+    printf("Enter The Char : ");
+    scanf("%c", &ch);
+
+    for (int i = 0; i &lt; len; i++) {
+        if (str[i] == ch) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found)
+        printf("Yes '%c' is present in \"%s\".", ch, str);
+    else
+        printf("No '%c' is not present in \"%s\".", ch, str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f14.c -o f14; .\f14
+Enter The String : Apple Mano
+Enter The Char : a
+Yes 'a' is present in "Apple Mano".
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q15" class="question-section">
+    <h3>15. Enter the string from user and enter a character, if it exists then print the bound number ?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[100], ch;
+    int len, found = 0, i;
+
+    printf("Enter The String : ");
+    gets(str);
+    len = strlen(str);
+
+    printf("Enter The Char : ");
+    scanf("%c", &ch);
+
+    for (i = 0; i &lt; len; i++) {
+        if (str[i] == ch) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found)
+        printf("Yes '%c' is present in \"%s\" and bound number is %d", ch, str, i);
+    else
+        printf("No '%c' is not present in \"%s\".", ch, str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f15.c -o f15; .\f15
+Enter The String : hello 
+Enter The Char : a
+No 'a' is not present in "hello ".
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q16" class="question-section">
+  <h3>16. Enter the string from user and count all vowels ?</h3>
+  <div class="answer-box">
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[100];
+    int count=0,len;
+    printf("Enter The String : ");
+    gets(str);
+    len=strlen(str);
+
+    for (int i=0; i &lt;len ; i++){
+
+        switch (str[i]){
+            case 'a':
+            count++;
+            break;
+            case 'e':
+            count++;
+            break;
+            case 'i':
+            count++;
+            break;
+            case 'o':
+            count++;
+            break;
+            case 'u':
+            count++;
+            break;
+            case 'A':
+            count++;
+            break;
+            case 'E':
+            count++;
+            break;
+            case 'I':
+            count++;
+            break;
+            case 'O':
+            count++;
+            break;
+            case 'U':
+            count++;
+            break;
+        }
+        
+    }
+
+    printf ("The number of vowels in %s is %d",str,count);
+
+    return 0;
+}</code></pre>
+  </div>
+  <div class="answer-box">
+    <h4>Output :</h4>
+    <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f16.c -o f16; .\f16
+Enter The String : Apple Mango ICE
+The number of vowels in Apple Mango ICE is 6</code></pre>
+  </div>
+</div>
+
+
+
+<div id="q17" class="question-section">
+    <h3>17. Enter the string from user and enter bound number and print character on that bound ?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[100];
+    int len, bound;
+
+    printf("Enter The String : ");
+    gets(str);
+    len = strlen(str);
+
+    printf("Enter the bound number : ");
+    scanf("%d", &bound);
+
+    if (bound &lt;= len &amp;&amp; bound &gt; 0)
+        printf("The Char that is bounded to %d is : %c", bound, str[bound - 1]);
+    else
+        printf("Enter a valid bound Number");
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f17.c -o f17; .\f17
+Enter The String : Hello World
+Enter the bound number : 7
+The Char that is bounded to 7 is : W
+</code></pre>
+    </div>
+</div>
+
+
+<div id="q18" class="question-section">
+    <h3>18. String palindrome example (using reverse)?</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[100], rev[100];
+    int len, i, j, isPalindrome = 1;
+
+    printf("Enter the string : ");
+    gets(str);
+    len = strlen(str);
+
+    for (i = 0, j = len - 1; i &lt; len; i++, j--) {
+        rev[i] = str[j];
+    }
+    rev[len] = '\0';
+
+    for (i = 0; i &lt; len; i++) {
+        if (str[i] != rev[i]) {
+            isPalindrome = 0;
+            break;
+        }
+    }
+
+    if (isPalindrome)
+        printf("%s is a Palindrome", str);
+    else
+        printf("%s is Not a palindrome", str);
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f18.c -o f18; .\f18
+Enter the string : eeelllooollleee
+eeelllooollleee is a Palindrome
+</code></pre>
+    </div>
+</div>
+
+<div id="q19" class="question-section">
+    <h3>19. Enter the data from user — the data consists of roll no., name, class, and marks of 5 subjects.</h3>
+
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+    int size = 5;
+
+    struct datatem {
+        char roll[8];
+        char name[51];
+        char class[10];
+        int marks[5];
+    };
+
+    struct datatem stddata[size];
+
+    for (int i = 0; i &lt; size; i++) {
+
+        printf("Enter the Records of students :\n");
+        printf("------------------------------------\n");
+
+        printf("Record Number : %d\n", i + 1);
+
+        printf("Enter the Roll no : ");
+        gets(stddata[i].roll);
+        fflush(stdin);
+
+        printf("Enter the Name of Student : ");
+        gets(stddata[i].name);
+        fflush(stdin);
+
+        printf("Enter the Class : ");
+        gets(stddata[i].class);
+        fflush(stdin);
+
+        for (int j = 0; j &lt; 5; j++) {
+            printf("Enter Marks of Subject %d : ", j + 1);
+            scanf("%d", &amp;stddata[i].marks[j]);
+        }
+        fflush(stdin);
+
+        printf("--------------------------------------\n");
+    }
+
+    printf("\n=== Student Records ===\n");
+    printf("\n----------------------------------\n");
+
+    for (int i = 0; i &lt; size; i++) {
+        printf("\nStudent Record number %d:\n", i + 1);
+        printf("\n----------------------------------\n\n");
+        printf("Roll                : %s\n", stddata[i].roll);
+        printf("Name                : %s\n", stddata[i].name);
+        printf("Class               : %s\n", stddata[i].class);
+        printf("Marks               : ");
+        for (int j = 0; j &lt; 5; j++) {
+            printf("%d ", stddata[i].marks[j]);
+        }
+        printf("\n----------------------------------\n");
+    }
+
+    return 0;
+}
+</code></pre>
+    </div>
+
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\11_strings&gt; gcc f19.c -o f19; .\f19
+Enter the Records of students :
+------------------------------------
+Record Number : 1
+Enter the Roll no : 24
+Enter the Name of Student : Yash
+Enter the Class : 12
+Enter Marks of Subject 1 : 90
+Enter Marks of Subject 2 : 90
+Enter Marks of Subject 3 : 90
+Enter Marks of Subject 4 : 90
+Enter Marks of Subject 5 : 90
+--------------------------------------
+Enter the Records of students :
+------------------------------------
+Record Number : 2
+Enter the Roll no : 25
+Enter the Name of Student : Aman
+Enter the Class : 12
+Enter Marks of Subject 1 : 90
+Enter Marks of Subject 2 : 90
+Enter Marks of Subject 3 : 90
+Enter Marks of Subject 4 : 90
+Enter Marks of Subject 5 : 90
+--------------------------------------
+Enter the Records of students :
+------------------------------------
+Record Number : 3
+Enter the Roll no : 26
+Enter the Name of Student : Ram
+Enter the Class : 12
+Enter Marks of Subject 1 : 60
+Enter Marks of Subject 2 : 60
+Enter Marks of Subject 3 : 60
+Enter Marks of Subject 4 : 60
+Enter Marks of Subject 5 : 60
+--------------------------------------
+Enter the Records of students :
+------------------------------------
+Record Number : 4
+Enter the Roll no : 27
+Enter the Name of Student : shyam
+Enter the Class : 12
+Enter Marks of Subject 1 : 8
+Enter Marks of Subject 2 : 9
+Enter Marks of Subject 3 : 8
+Enter Marks of Subject 4 : 89
+Enter Marks of Subject 5 : 89
+--------------------------------------
+Enter the Records of students :
+------------------------------------
+Record Number : 5
+Enter the Roll no : 22
+Enter the Name of Student : Ajay
+Enter the Class : 12
+Enter Marks of Subject 1 : 45
+Enter Marks of Subject 2 : 45
+Enter Marks of Subject 3 : 45
+Enter Marks of Subject 4 : 45
+Enter Marks of Subject 5 : 45
+--------------------------------------
+
+=== Student Records ===
+
+----------------------------------
+
+Student Record number 1:
+
+----------------------------------
+
+Roll                : 24
+Name                : Yash
+Class               : 12
+Marks               : 90 90 90 90 90
+----------------------------------
+
+Student Record number 2:
+
+----------------------------------
+
+Roll                : 25
+Name                : Aman
+Class               : 12
+Marks               : 90 90 90 90 90
+----------------------------------
+
+Student Record number 3:
+
+----------------------------------
+
+Roll                : 26
+Name                : Ram
+Class               : 12
+Marks               : 60 60 60 60 60
+----------------------------------
+
+Student Record number 4:
+
+----------------------------------
+
+Roll                : 27
+Name                : shyam
+Class               : 12
+Marks               : 8 9 8 89 89
+----------------------------------
+
+Student Record number 5:
+
+----------------------------------
+
+Roll                : 22
+Name                : Ajay
+Class               : 12
+Marks               : 45 45 45 45 45
+----------------------------------
+</code></pre>
+    </div>
+</div>
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

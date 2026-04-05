@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILE HANDLING - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="../index.html">C++ Questions</a></div>
+      </nav>
+      
+
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>FILE HANDLING</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Write a C++ program to create a new text file and write some text into it.</a></li>
+                    <li><a href="#q2">2. Write a C++ program to open an existing text file and display its contents on the console.</a></li>
+                    <li><a href="#q3">3. Write a C++ program to count the number of lines in a text file.</a></li>
+                    <li><a href="#q4">4. Write a C++ program to count the number of words in a text file.</a></li>
+                    <li><a href="#q5">5. Write a C++ program to copy the contents of one text file to another.</a></li>
+                    <li><a href="#q6">6. Write a C++ program to find and replace a specific word in a text file.</a></li>
+                    <li><a href="#q7">7. Write a C++ program to append new data to an existing text file.</a></li>
+                    <li><a href="#q8">8. Write a C++ program to sort the lines of a text file in alphabetical order.</a></li>
+                    <li><a href="#q9">9. Write a C++ program to merge multiple text files into a single file.</a></li>
+                    <li><a href="#q10">10. Write a C++ program to split a large text file into smaller files of equal size.</a></li>
+                    <li><a href="#q11">11. Write a C++ program to search for a specific string in a text file and display its line number(s).</a></li>
+                    <li><a href="#q12">12. Write a C++ program to encrypt the contents of a text file using a simple encryption algorithm.</a></li>
+                    <li><a href="#q13">13. Write a C++ program to decrypt the contents of a text file encrypted using the above algorithm.</a></li>
+                    <li><a href="#q14">14. Write a C++ program to read a CSV file and display its contents in tabular form.</a></li>
+                    <li><a href="#q15">15. Write a C++ program to calculate the average of numbers stored in a file.</a></li>
+                    <li><a href="#q16">16. Write a C++ program to store student records in a binary file with insert, delete, update, search, and clone options.</a></li>
+                </ul>
+            </div>
+
+<div class="question-section" id="q1">
+<h3>1. Write a C++ program to create a new text file and write some text into it.</h3>
+<div class="answer-box">
+<h4>Answer 1:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    ofstream file(&quot;data.txt&quot;);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened &quot;;
+    }
+
+
+    file &lt;&lt; &quot;Hellllo \n&quot;; 
+    cout &lt;&lt; &quot;Data Entered &quot;;
+    file.close();
+    return 1;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 1:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f1.cpp -o f1 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f1 }
+file opened Data Entered</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q2">
+<h3>2. Write a C++ program to open an existing text file and display its contents on the console.</h3>
+<div class="answer-box">
+<h4>Answer 2:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    ifstream file (&quot;data.txt&quot;);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened \n\n&quot;;
+    }
+
+    char a;
+    while (file.get(a))
+    {
+       cout &lt;&lt; a;
+    }
+
+    file.close();
+    return 1;
+    
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 2:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f2.cpp -o f2 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f2 }
+file opened
+
+Hellllo
+Hellllo
+Hell
+Hell</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q3">
+<h3>3. Write a C++ program to count the number of lines in a text file.</h3>
+<div class="answer-box">
+<h4>Answer 3:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    ifstream file (&quot;data.txt&quot;);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened \n\n&quot;;
+    }
+
+    int a = 0;
+    string temp;
+    while (getline(file,temp))
+    {
+       a++;
+    }
+
+    cout &lt;&lt; &quot;No of Lines : &quot;&lt;&lt;a;
+    file.close();
+    return 1;
+    
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 3:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f3.cpp -o f3 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f3 }
+file opened
+
+No of Lines : 4</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q4">
+<h3>4. Write a C++ program to count the number of words in a text file.</h3>
+<div class="answer-box">
+<h4>Answer 4:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    ifstream file (&quot;data.txt&quot;);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened \n\n&quot;;
+    }
+
+    int a = 0;
+    string temp;
+    while (file &gt;&gt; temp)
+    {
+       a++;
+    }
+
+    cout &lt;&lt; &quot;No of Words : &quot;&lt;&lt;a;
+    file.close();
+    return 1;
+    
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 4:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f4.cpp -o f4 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f4 }
+file opened
+
+No of Words : 5</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q5">
+<h3>5. Write a C++ program to copy the contents of one text file to another.</h3>
+<div class="answer-box">
+<h4>Answer 5:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    string path = &quot;data.txt&quot;;
+    ifstream file (path);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened \n\n&quot;;
+    }
+    ofstream copy(&quot;copyof_&quot;+ path);
+    if (!copy.is_open()){
+        cout &lt;&lt; &quot;Copy file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;Copy file opened \n&quot;;
+    }
+
+    char a;
+    while (file.get(a))
+    {
+        copy &lt;&lt; a;
+    }
+
+    cout &lt;&lt; &quot;file Copied&quot;;
+    file.close();
+    return 1;
+    
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 5:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f5.cpp -o f5 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f5 }
+file opened
+
+Copy file opened
+file Copied</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q6">
+<h3>6. Write a C++ program to find and replace a specific word in a text file.</h3>
+<div class="answer-box">
+<h4>Answer 6:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    fstream file (&quot;data.txt&quot;,ios::in | ios::out);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened \n\n&quot;;
+    }
+
+    string temp,word;
+    cout &lt;&lt; &quot;Enter the word to search : &quot;;
+    cin &gt;&gt; temp;
+    cout &lt;&lt; &quot;Enter the word to Replace : &quot;;
+    cin &gt;&gt; word;
+    while (file &gt;&gt; temp)
+    {
+
+        if (temp == word){
+
+            if (temp.length() == word.length()){
+                file.seekg(-temp.length(),ios::cur);
+                file &lt;&lt; word;
+                cout &lt;&lt; &quot;Word Replaced\n&quot;;
+                break;
+            }
+            else {
+                cout &lt;&lt; &quot;Word size not match\n&quot;;
+                
+            }
+
+        }
+    }
+
+    cout &lt;&lt; &quot;Word Replaced &quot;;
+    file.close();
+    return 1;
+    
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 6:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q7">
+<h3>7. Write a C++ program to append new data to an existing text file.</h3>
+<div class="answer-box">
+<h4>Answer 7:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    ofstream file (&quot;data.txt&quot;,ios::app);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened \n\n&quot;;
+    }
+
+    string temp;
+    cout &lt;&lt; &quot;Enter the data : &quot;;
+    getline(cin, temp);
+    file &lt;&lt; temp;
+    cout &lt;&lt; &quot;Appeded&quot;;
+    file.close();
+    return 1;
+    
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 7:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f7.cpp -o f7 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f7 }
+file opened
+
+Enter the data : Yooo Hii
+Appeded
+
+
+
+
+FILE
+
+Hellllo
+Hell llo
+aaa
+Hell
+YooooooYooo Hii</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q8">
+<h3>8. Write a C++ program to sort the lines of a text file in alphabetical order.</h3>
+<div class="answer-box">
+<h4>Answer 8:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+    
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 8:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q9">
+<h3>9. Write a C++ program to merge multiple text files into a single file.</h3>
+<div class="answer-box">
+<h4>Answer 9:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    ifstream file1 (&quot;data1.txt&quot;);
+    ifstream file2 (&quot;data2.txt&quot;);
+    ifstream file3 (&quot;data3.txt&quot;);
+    ofstream merge (&quot;merge.txt&quot;);
+
+    if (!file1.is_open() || !file2.is_open() ||!file3.is_open() ||!merge.is_open()){
+        cout &lt;&lt; &quot;files not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;files opened \n\n&quot;;
+    }
+
+    char a;
+    while (file1.get(a))
+    {
+        merge &lt;&lt; a;
+    }
+    while (file2.get(a))
+    {
+        merge &lt;&lt; a;
+    }
+    while (file3.get(a))
+    {
+        merge &lt;&lt; a;
+    }
+
+    cout &lt;&lt; &quot;File Merged&quot;;
+    return 1;
+
+
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 9:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f9.cpp -o f9 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f9 }
+files opened
+
+File Merged
+
+
+merge.txt
+
+A well-structured paragraph serves as a foundational building block of writing, focusing on a single, cohesive idea. t typically begins with a clear topic sentence that introduces the main point, followed by supporting sentences that provide relevant details, evidence, or examples to develop that idea.To maintain flow and coherence, writers often use transition words to connect these sentences logically. Finally, a strong paragraph closes with a concluding sentence that summarizes the main point or bridges to the next topic. While often composed of three to five sentences, the length can vary depending on the depth of the topic and the writer&#x27;s style.</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q10">
+<h3>10. Write a C++ program to split a large text file into smaller files of equal size.</h3>
+<div class="answer-box">
+<h4>Answer 10:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+
+    ifstream data(&quot;data.txt&quot;);
+    ofstream file1(&quot;split1.txt&quot;);
+    ofstream file2(&quot;split2.txt&quot;);
+    ofstream file3(&quot;split3.txt&quot;);
+
+    if (!data || !file1 || !file2 || !file3) {
+        cout &lt;&lt; &quot;Files not opened&quot;;
+        return 0;
+    }
+
+    cout &lt;&lt; &quot;Files opened\n&quot;;
+
+    data.seekg(0, ios::end);
+    int size = data.tellg();
+    data.seekg(0, ios::beg);
+
+    int f = size / 3;
+
+    char a;
+    int count = 0;
+
+    while (data.get(a)) {
+        if (count &lt; f)
+            file1 &lt;&lt; a;
+        else if (count &lt; 2 * f)
+            file2 &lt;&lt; a;
+        else
+            file3 &lt;&lt; a;
+
+        count++;
+    }
+
+    cout &lt;&lt; &quot;File Splitted&quot;;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 10:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f10.cpp -o f10 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f10 }
+Files opened
+File Split Successfully</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q11">
+<h3>11. Write a C++ program to search for a specific string in a text file and display its line number(s).</h3>
+<div class="answer-box">
+<h4>Answer 11:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main(){
+
+    ifstream file (&quot;data.txt&quot;);
+    if (!file.is_open()){
+        cout &lt;&lt; &quot;file not opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened \n\n&quot;;
+    }
+
+    string temp,search;
+    cout &lt;&lt; &quot;Enter the sting to search : &quot;;
+    cin &gt;&gt; search;
+    int a = 0;
+    while (getline(file,temp))
+    {
+        a++;
+      if (temp.find(search) != string::npos) {
+        cout &lt;&lt; &quot;Word found , Line no : &quot; &lt;&lt; a &lt;&lt; &quot;\n&quot;;
+    } 
+    }
+
+    file.close();
+    return 1;
+
+    
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 11:</h4>
+<pre><code>PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f11.cpp -o f11 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f11 }
+file opened
+
+Enter the sting to search : Hell
+Word found , Line no : 1
+Word found , Line no : 2
+Word found , Line no : 4
+PS F:\cpp\New folder\File Handeling&gt; cd &quot;f:\cpp\New folder\File Handeling\&quot; ; if ($?) { g++ f11.cpp -o f11 -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 } ; if ($?) { .\f11 }
+file opened
+
+Enter the sting to search : hgh</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q12">
+<h3>12. Write a C++ program to encrypt the contents of a text file using a simple encryption algorithm.</h3>
+<div class="answer-box">
+<h4>Answer 12:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+
+    ifstream data(&quot;data.txt&quot;,ios::in);
+    ofstream encrypt(&quot;encrypted.txt&quot;,ios::out);
+
+
+    if (!data.is_open() || !encrypt.is_open()){
+        cout &lt;&lt; &quot;File no opened &quot;;
+        return 0;
+    }
+
+    else {
+        cout &lt;&lt; &quot;File Opened &quot;;
+    }
+   
+    char a;
+    
+    while (data.get(a)){
+        encrypt &lt;&lt; (char)(a+3);
+    }
+    cout &lt;&lt; &quot;Data Added \n&quot;;
+
+    // cout &lt;&lt; &quot;Decrypting Data \n&quot;;
+
+    // data.close();
+    // encrypt.close();
+
+    // ifstream decrypt(&quot;encrypted.txt&quot;);
+    // while(decrypt.get(a)){
+    //     cout &lt;&lt; (char)(a-3) ;
+    // }
+
+    // cout &lt;&lt; &quot;\nEnd &quot;;
+
+
+
+
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 12:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\11-File_Handling_16&gt; cd &quot;e:\dddddddd\CPP_Que\11-File_Handling_16\&quot; ; if ($?) { g++ f12.cpp -o f12 } ; if ($?) { .\f12 }
+File Opened Data Added
+
+ENCRYPTED FIEL
+
+D#zhoo0vwuxfwxuhg#sdudjudsk#vhuyhv#dv#d#irxqgdwlrqdo#exloglqj#eorfn#ri#zulwlqj/#irfxvlqj#rq#d#vlqjoh/#frkhvlyh#lghd1#w#w|slfdoo|#ehjlqv#zlwk#d#fohdu#wrslf#vhqwhqfh#wkdw#lqwurgxfhv#wkh#pdlq#srlqw/#iroorzhg#e|#vxssruwlqj#vhqwhqfhv#wkdw#surylgh#uhohydqw#ghwdlov/#hylghqfh/#ru#h{dpsohv#wr#ghyhors#wkdw#lghd1Wr#pdlqwdlq#iorz#dqg#frkhuhqfh/#zulwhuv#riwhq#xvh#wudqvlwlrq#zrugv#wr#frqqhfw#wkhvh#vhqwhqfhv#orjlfdoo|1#Ilqdoo|/#d#vwurqj#sdudjudsk#forvhv#zlwk#d#frqfoxglqj#vhqwhqfh#wkdw#vxppdul}hv#wkh#pdlq#srlqw#ru#eulgjhv#wr#wkh#qh{w#wrslf1#Zkloh#riwhq#frpsrvhg#ri#wkuhh#wr#ilyh#vhqwhqfhv/#wkh#ohqjwk#fdq#ydu|#ghshqglqj#rq#wkh#ghswk#ri#wkh#wrslf#dqg#wkh#zulwhu*v#vw|oh1</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q13">
+<h3>13. Write a C++ program to decrypt the contents of a text file encrypted using the above algorithm.</h3>
+<div class="answer-box">
+<h4>Answer 13:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+
+
+    ifstream decrypt(&quot;encrypted.txt&quot;);
+
+     if (!decrypt.is_open()){
+        cout &lt;&lt; &quot;File no opened &quot;;
+        return 0;
+    }
+    else {
+        cout &lt;&lt; &quot;file opened &quot;;
+    }
+
+    char a;
+    while(decrypt.get(a)){
+        cout &lt;&lt; (char)(a-3) ;
+    }
+
+    cout &lt;&lt; &quot;\nEnd &quot;;
+    return 1;
+
+
+
+
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 13:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\11-File_Handling_16&gt; cd &quot;e:\dddddddd\CPP_Que\11-File_Handling_16\&quot; ; if ($?) { g++ f13.cpp -o f13 } ; if ($?) { .\f13 }
+file opened A well-structured paragraph serves as a foundational building block of writing, focusing on a single, cohesive idea. t typically begins with a clear topic sentence that introduces the main point, followed by supporting sentences that provide relevant details, evidence, or examples to develop that idea.To maintain flow and coherence, writers often use transition words to connect these sentences logically. Finally, a strong paragraph closes with a concluding sentence that summarizes the main point or bridges to the next topic. While often composed of three to five sentences, the length can vary depending on the depth of the topic and the writer&#x27;s style.
+End</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q14">
+<h3>14. Write a C++ program to read a CSV file and display its contents in tabular form.</h3>
+<div class="answer-box">
+<h4>Answer 14:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+
+int main(){
+
+    ifstream file(&quot;data.csv&quot;,ios::in);
+
+    string line , cell;
+
+    while (getline(file,line)){
+        
+        stringstream ss(line);
+        while (getline(ss,cell,&#x27;,&#x27;)){
+            cout &lt;&lt; left &lt;&lt; std::setw(10) &lt;&lt; cell ;
+        }
+        cout &lt;&lt; &quot;\n&quot;;
+        
+    }
+
+
+    return 0 ;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 14:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\11-File_Handling_16&gt; cd &quot;e:\dddddddd\CPP_Que\11-File_Handling_16\&quot; ; if ($?) { g++ f14.cpp -o f14 } ; if ($?) { .\f14 }
+ID        Name      Class     Maths     Science   English   Computer  Total     Average   Grade     Status
+101       Aman      12A       78        82        75        80        315       78.75     B         Pass
+102       Simran    12A       88        79        82        86        335       83.75     A         Pass
+103       Rahul     12B       65        70        68        72        275       68.75     C         Pass
+104       Priya     12B       92        91        89        95        367       91.75     A+        Pass</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q15">
+<h3>15. Write a C++ program to calculate the average of numbers stored in a file.</h3>
+<div class="answer-box">
+<h4>Answer 15:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 15:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q16">
+<h3>16. Write a C++ program to store student records in a binary file with insert, delete, update, search, and clone options.</h3>
+<div class="answer-box">
+<h4>Answer 16:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 16:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

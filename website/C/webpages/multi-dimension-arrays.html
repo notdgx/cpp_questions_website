@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULTI-DIMENSION ARRAYS - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="#">C Language Questions</a></div>
+      </nav>
+      
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>MULTI-DIMENSION ARRAYS</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Enter the four number from user and print it into matrix</a></li>
+                    <li><a href="#q2">2. Enter the matrix from and transpose them ?</a></li>
+                    <li><a href="#q3">3. Enter 2 matrix from user and add them ?</a></li>
+                    <li><a href="#q4">4. Enter 2 matrix from user and subtract them ?</a></li>
+                    <li><a href="#q5">5. Enter 2 matrix from user and multiply them ?</a></li>
+                </ul>
+            </div>
+
+            <div id="q1" class="question-section">
+    <h3>1. Enter four numbers from user and print them into matrix</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a[2][2];
+    for (int i = 0; i &lt; 2; i++) {
+        for (int j = 0; j &lt; 2; j++) {
+            printf("Enter the number : ");
+            scanf("%d", &amp;a[i][j]);
+        }
+    }
+
+    for (int i = 0; i &lt; 2; i++) {
+        for (int j = 0; j &lt; 2; j++) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\6_multi_dimension_arrays&gt; gcc f1.c -o f1; .\f1
+Enter the number : 4
+Enter the number : 5
+Enter the number : 6
+Enter the number : 3
+4 5
+6 3</code></pre>
+    </div>
+</div>
+
+
+<div id="q2" class="question-section">
+    <h3>2. Enter the matrix and transpose them</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a[10][10], transpose[10][10];
+    int r, c;
+
+    printf("Enter number of rows : ");
+    scanf("%d", &amp;r);
+    printf("Enter the number of colunns : ");
+    scanf("%d", &amp;c);
+
+    printf("Enter elements of matrix :\n");
+    for (int i = 0; i &lt; r; i++) {
+        for (int j = 0; j &lt; c; j++) {
+            scanf("%d", &amp;a[i][j]);
+        }
+    }
+
+    for (int i = 0; i &lt; r; i++) {
+        for (int j = 0; j &lt; c; j++) {
+            transpose[j][i] = a[i][j];
+        }
+    }
+
+    printf("\nOriginal Matrix :\n");
+    for (int i = 0; i &lt; r; i++) {
+        for (int j = 0; j &lt; c; j++) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nTranspose matrix :\n");
+    for (int i = 0; i &lt; c; i++) {
+        for (int j = 0; j &lt; r; j++) {
+            printf("%d ", transpose[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\6_multi_dimension_arrays&gt; gcc f2.c -o f2; .\f2
+Enter number of rows : 2
+Enter the number of colunns : 3
+Enter elements of matrix :
+1 2 345
+67 8 9
+
+Original Matrix :
+1 2 345
+67 8 9
+
+Transpose matrix :
+1 67
+2 8
+345 9</code></pre>
+    </div>
+</div>
+
+<div id="q3" class="question-section">
+    <h3>3. Enter 2 matrices from user and add them</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+int main(){
+    int mat1[2][2],mat2[2][2];
+
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("Enter the number in MATRICE  1 : ");
+            scanf("%d",&amp;mat1[i][j]);
+        }
+    }
+
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("Enter the number in MATRICE  2 : ");
+            scanf("%d",&amp;mat2[i][j]);
+        }
+    }
+
+    // adding the matrices
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            mat1[i][j]+=mat2[i][j];
+        }
+    }
+
+    printf("\nSUM of two matrices :\n");
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("%d ",mat1[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\6_multi_dimension_arrays&gt; gcc f3.c -o f3; .\f3
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  2 : 2
+Enter the number in MATRICE  2 : 2
+Enter the number in MATRICE  2 : 2
+Enter the number in MATRICE  2 : 2
+
+SUM of two matrices :
+4 4
+4 4</code></pre>
+    </div>
+</div>
+
+
+<div id="q4" class="question-section">
+    <h3>4. Enter 2 matrices from user and subtract them</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+int main(){
+    int mat1[2][2],mat2[2][2];
+
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("Enter the number in MATRICE  1 : ");
+            scanf("%d",&amp;mat1[i][j]);
+        }
+    }
+
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ;j++){
+            printf("Enter the number in MATRICE  2 : ");
+            scanf("%d",&amp;mat2[i][j]);
+        }
+    }
+
+    // subtracting the matrices
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            mat1[i][j]-=mat2[i][j];
+        }
+    }
+
+    printf("\nDIFFERENCE of two matrices :\n");
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("%d ",mat1[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\6_multi_dimension_arrays&gt; gcc f4.c -o f4; .\f4
+Enter the number in MATRICE  1 : 3
+Enter the number in MATRICE  1 : 3
+Enter the number in MATRICE  1 : 3
+Enter the number in MATRICE  1 : 3
+Enter the number in MATRICE  2 : 5
+Enter the number in MATRICE  2 : 5
+Enter the number in MATRICE  2 : 5
+Enter the number in MATRICE  2 : 5
+
+DIFFERENCE of two matrices :
+-2 -2
+-2 -2</code></pre>
+    </div>
+</div>
+
+
+<div id="q5" class="question-section">
+    <h3>5. Enter 2 matrices from user and multiply them</h3>
+    <div class="answer-box">
+        <pre><code>#include &lt;stdio.h&gt;
+int main(){
+    int mat1[2][2],mat2[2][2],result[2][2]={0};
+
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("Enter the number in MATRICE  1 : ");
+            scanf("%d",&amp;mat1[i][j]);
+        }
+    }
+
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("Enter the number in MATRICE  2 : ");
+            scanf("%d",&amp;mat2[i][j]);
+        }
+    }
+
+    // multiplying
+    for (int i = 0; i &lt; 2; i++) {
+        for (int j = 0; j &lt; 2; j++) {
+            for (int k = 0; k &lt; 2; k++) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+
+    printf("\nMatrix multiplication of two matrices :\n");
+    for (int i=0; i&lt;2 ;i++){
+        for (int j=0 ; j&lt;2 ; j++){
+            printf("%d ",result[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="answer-box">
+        <h4>Output :</h4>
+        <pre><code>PS D:\dx\Coding\C_4205_BCA\source\6_multi_dimension_arrays&gt; gcc f5.c -o f5; .\f5
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  1 : 2
+Enter the number in MATRICE  2 : 2
+Enter the number in MATRICE  2 : 2
+Enter the number in MATRICE  2 : 2
+Enter the number in MATRICE  2 : 2
+
+Matrix multiplication of two matrices :
+8 8
+8 8</code></pre>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

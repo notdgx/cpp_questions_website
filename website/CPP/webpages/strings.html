@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRINGS - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="../index.html">C++ Questions</a></div>
+      </nav>
+      
+
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>STRINGS</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Program to Check Anagram</a></li>
+                    <li><a href="#q2">2. Program to Swapping Pair of Characters</a></li>
+                    <li><a href="#q3">3. Program to Check if a String contains only digits?</a></li>
+                    <li><a href="#q4">4. Program to perform Deep Copy for String?</a></li>
+                    <li><a href="#q5">5. Program to remove all occurrences of a given character from input String?</a></li>
+                    <li><a href="#q6">6. Program to Add Characters to a String</a></li>
+                    <li><a href="#q7">7. Program to check whether a string is a Palindrome</a></li>
+                    <li><a href="#q8">8. Program to Convert Enum to String</a></li>
+                    <li><a href="#q9">9. Program to count number of words in a String?</a></li>
+                    <li><a href="#q10">10. Program to count the total number of characters in a string</a></li>
+                    <li><a href="#q11">11. Program to count the total number of punctuation characters exists in a String</a></li>
+                    <li><a href="#q12">12. Program to count the total number of vowels and consonants in a string</a></li>
+                    <li><a href="#q13">13. Program to determine whether a given string is palindrome</a></li>
+                    <li><a href="#q14">14. Program to determine whether one string is a rotation of another</a></li>
+                    <li><a href="#q15">15. Program to divide a string in &#x27;N&#x27; equal parts.</a></li>
+                    <li><a href="#q16">16. Program to find all subsets of a string</a></li>
+                    <li><a href="#q17">17. Program to find all the permutations of a string</a></li>
+                    <li><a href="#q18">18. Program to find maximum and minimum occurring character in a string</a></li>
+                    <li><a href="#q19">19. Program to find Reverse of the string</a></li>
+                    <li><a href="#q20">20. Program to find the duplicate characters in a string</a></li>
+                    <li><a href="#q21">21. Program to find the duplicate words in a string</a></li>
+                    <li><a href="#q22">22. Program to find the frequency of characters</a></li>
+                    <li><a href="#q23">23. Program to find the largest and smallest word in a string</a></li>
+                    <li><a href="#q24">24. Program to find the longest repeating sequence in a string</a></li>
+                    <li><a href="#q25">25. Program to find the most repeated word in a text file</a></li>
+                    <li><a href="#q26">26. Program to find the number of the words in the given text file</a></li>
+                    <li><a href="#q27">27. Program to Get a Character From the Given String</a></li>
+                    <li><a href="#q28">28. Program to Insert a string into another string</a></li>
+                    <li><a href="#q29">29. Program to Print a New Line in String (Each word in newline)</a></li>
+                    <li><a href="#q30">30. Program to Print even length words</a></li>
+                    <li><a href="#q31">31. Program to print smallest and biggest possible palindrome word in a given string</a></li>
+                    <li><a href="#q32">32. Program to remove all the white spaces from a string</a></li>
+                    <li><a href="#q33">33. Program to replace lower-case characters with upper-case and vice-versa</a></li>
+                    <li><a href="#q34">34. Program to replace the spaces of a string with a specific character</a></li>
+                    <li><a href="#q35">35. Program to separate the Individual Characters from a String</a></li>
+                    <li><a href="#q36">36. Program to Splitting into a number of sub-strings</a></li>
+                    <li><a href="#q37">37. Program to swap two string variables without using third or temp variable.</a></li>
+                    <li><a href="#q38">38. Read two String user input and check if first contains second?</a></li>
+                    <li><a href="#q39">39. Reverse String Word by Word</a></li>
+                    <li><a href="#q40">40. Write a program to check if two Strings are created with same characters?</a></li>
+                    <li><a href="#q41">41. Write a program to find out first non repeated character from input String?</a></li>
+                    <li><a href="#q42">42. Write a C++ method to count all words in a string</a></li>
+                    <li><a href="#q43">43. Write a C++ method to count all vowels in a string</a></li>
+                    <li><a href="#q44">44. Write a C++ Program to Sort Names in an Alphabetical Order</a></li>
+                    <li><a href="#q45">45. Write a C++ method to count all the words in a string.</a></li>
+                    <li><a href="#q46">46. Write a C++ method to compute the future investment value at a given interest rate for a specified number of years.</a></li>
+                    <li><a href="#q47">47. Write a C++ method to print characters between two characters (i.e. A to P).</a></li>
+                    <li><a href="#q48">48. Write a C++ method to check whether a string is a valid password.</a></li>
+                    <li><a href="#q49">49. Write a C++ method to display the current date and time.</a></li>
+                    <li><a href="#q50">50. Write a C++ method that accepts three integers and returns true if one is the middle point between the other two integers, otherwise false</a></li>
+                </ul>
+            </div>
+
+<div class="question-section" id="q1">
+<h3>1. Program to Check Anagram</h3>
+<div class="answer-box">
+<h4>Answer 1:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+bool isAnagram(string first, string second){
+
+    if (first.length() != second.length()){
+        return false;
+    }
+
+    int freq[26] = {0};
+
+    for (int i = 0; i &lt; first.length(); i++){
+        freq[first[i] - &#x27;a&#x27;]++;
+        freq[second[i] - &#x27;a&#x27;]--;
+    }
+
+    for (int i = 0; i &lt; 26; i++){
+        if (freq[i] != 0){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+int main(){
+
+    string first;
+    string second;
+
+    cout &lt;&lt; &quot;Enter first string: &quot;;
+    cin &gt;&gt; first;
+
+    cout &lt;&lt; &quot;Enter second string: &quot;;
+    cin &gt;&gt; second;
+
+    if (isAnagram(first, second)){
+        cout &lt;&lt; &quot;Anagram&quot;;
+    }
+
+    if (!isAnagram(first, second)){
+        cout &lt;&lt; &quot;Not anagram&quot;;
+    }
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 1:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que1.cpp -o que1 } ; if ($?) { .\que1 }
+Enter first string: listen
+Enter second string: silent
+Anagram</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q2">
+<h3>2. Program to Swapping Pair of Characters</h3>
+<div class="answer-box">
+<h4>Answer 2:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+int main(){
+
+    string text;
+
+    cout &lt;&lt; &quot;Enter a string: &quot;;
+    cin &gt;&gt; text;
+
+    // a h k h d
+    // 0 1 2 3 4 
+
+    for (int i = 0; i + 1 &lt; (int)text.length(); i += 2){
+        char temp = text[i];
+        text[i] = text[i + 1];
+        text[i + 1] = temp;
+    }
+
+    cout &lt;&lt; &quot;After swapping pair of characters: &quot; &lt;&lt; text ;
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 2:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que2.cpp -o que2 } ; if ($?) { .\que2 }
+Enter a string: strings
+After swapping pair of characters: tsirgns</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q3">
+<h3>3. Program to Check if a String contains only digits?</h3>
+<div class="answer-box">
+<h4>Answer 3:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+bool onlyDigits(string text){
+
+    if (text.length() == 0){
+        return false;
+    }
+
+    for (int i = 0; i &lt; text.length(); i++){
+        if (text[i] &lt; &#x27;0&#x27; || text[i] &gt; &#x27;9&#x27;){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+int main(){
+
+    string text;
+
+    cout &lt;&lt; &quot;Enter a string: &quot;;
+    cin &gt;&gt; text;
+
+    if (onlyDigits(text)){
+        cout &lt;&lt; &quot;Yes&quot;;
+    }
+
+    if (!onlyDigits(text)){
+        cout &lt;&lt; &quot;No &quot;;
+    }
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 3:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que3.cpp -o que3 } ; if ($?) { .\que3 }
+Enter a string: 44534332343
+Yes</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q4">
+<h3>4. Program to perform Deep Copy for String?</h3>
+<div class="answer-box">
+<h4>Answer 4:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+int main(){
+
+    string original;
+    string copied = &quot;&quot;;
+
+    cout &lt;&lt; &quot;Enter a string: &quot;;
+    cin &gt;&gt; original;
+
+    for (int i = 0; i &lt; original.length(); i++){
+        copied += original[i];
+    }
+
+    cout &lt;&lt; &quot;Original string: &quot; &lt;&lt; original &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Copied string: &quot; &lt;&lt; copied ;
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 4:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que4.cpp -o que4 } ; if ($?) { .\que4 }
+Enter a string: helllo
+Original string: helllo
+Copied string: helllo</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q5">
+<h3>5. Program to remove all occurrences of a given character from input String?</h3>
+<div class="answer-box">
+<h4>Answer 5:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+int main(){
+
+    string text;
+    char ch;
+    string result = &quot;&quot;;
+
+    cout &lt;&lt; &quot;Enter a string: &quot;;
+    cin &gt;&gt; text;
+
+    cout &lt;&lt; &quot;Enter character to remove: &quot;;
+    cin &gt;&gt; ch;
+
+    for (int i = 0; i &lt; text.length(); i++){
+        if (text[i] != ch){
+            result += text[i];
+        }
+    }
+
+    cout &lt;&lt; &quot;String after removal: &quot; &lt;&lt; result ;
+    return 0;
+}
+
+
+PS E:\dddddddd\CPP_Que\03/</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 5:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q6">
+<h3>6. Program to Add Characters to a String</h3>
+<div class="answer-box">
+<h4>Answer 6:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+int main(){
+
+    string text;
+    string extra;
+
+    cout &lt;&lt; &quot;Enter base string: &quot;;
+    cin &gt;&gt; text;
+
+    cout &lt;&lt; &quot;Enter characters to add: &quot;;
+    cin &gt;&gt; extra;
+
+    text += extra;
+
+    cout &lt;&lt; &quot;Updated string: &quot; &lt;&lt; text ;
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 6:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que6.cpp -o que6 } ; if ($?) { .\que6 }
+Enter base string: hello
+Enter characters to add: ooooo
+Updated string: helloooooo</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q7">
+<h3>7. Program to check whether a string is a Palindrome</h3>
+<div class="answer-box">
+<h4>Answer 7:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+// e e l l e e 
+// 0 1 2 3 4 5 
+
+bool isPalindrome(string text){
+
+    int start = 0;
+    int end = text.length() - 1;
+
+    while (start &lt; end){
+        if (text[start] != text[end]){
+            return false;
+        }
+
+        start++;
+        end--;
+    }
+
+    return true;
+}
+
+
+int main(){
+
+    string text;
+
+    cout &lt;&lt; &quot;Enter a string : &quot;;
+    cin &gt;&gt; text;
+
+    if (isPalindrome(text)){
+        cout &lt;&lt; &quot;Palindrome &quot;;
+    }
+
+    if (!isPalindrome(text)){
+        cout &lt;&lt; &quot;Not palindrome&quot;;
+    }
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 7:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que7.cpp -o que7 } ; if ($?) { .\que7 }
+Enter a string : ellelle
+Palindrome</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q8">
+<h3>8. Program to Convert Enum to String</h3>
+<div class="answer-box">
+<h4>Answer 8:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 8:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q9">
+<h3>9. Program to count number of words in a String?</h3>
+<div class="answer-box">
+<h4>Answer 9:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+int countWords(string text){
+
+    int words = 0;
+    int inWord = 0;
+
+    for (int i = 0; i &lt; text.length(); i++){
+        if (text[i] != &#x27; &#x27; &amp;&amp; text[i] != &#x27;\t&#x27; &amp;&amp; text[i] != &#x27;\n&#x27;){
+            if (inWord == 0){
+                words++;
+                inWord = 1;
+            }
+        }
+
+        if (text[i] == &#x27; &#x27; || text[i] == &#x27;\t&#x27; || text[i] == &#x27;\n&#x27;){
+            inWord = 0;
+        }
+    }
+
+    return words;
+}
+
+
+int main(){
+
+    string text;
+
+    cout &lt;&lt; &quot;Enter the string : &quot;;
+    getline(cin, text);
+
+    cout &lt;&lt; &quot;Number of words : &quot; &lt;&lt; countWords(text) ;
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 9:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que9.cpp -o que9 } ; if ($?) { .\que9 }
+Enter the string : hello worrld hello world hello world
+Number of words : 6</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q10">
+<h3>10. Program to count the total number of characters in a string</h3>
+<div class="answer-box">
+<h4>Answer 10:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+int main(){
+
+    string text;
+
+    cout &lt;&lt; &quot;Enter a string : &quot;;
+    getline(cin, text);
+
+    cout &lt;&lt; &quot;Total characters : &quot; &lt;&lt; text.length() ;
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 10:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que10.cpp -o que10 } ; if ($?) { .\que10 }
+Enter a string : hello world
+Total characters : 12</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q11">
+<h3>11. Program to count the total number of punctuation characters exists in a String</h3>
+<div class="answer-box">
+<h4>Answer 11:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+bool isPunctuation(char ch){
+
+    string marks = &quot;.,;:!?&#x27;-\&quot;()[]{}&quot;;
+
+    for (int i = 0; i &lt; marks.length() ; i++){
+        if (ch == marks[i]){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+int main(){
+
+    string text;
+    int count = 0;
+
+    cout &lt;&lt; &quot;Enter a string : &quot;;
+    getline(cin, text);
+
+    for (int i = 0; i &lt; (int)text.length(); i++){
+        if (isPunctuation(text[i])){
+            count++;
+        }
+    }
+
+    cout &lt;&lt; &quot;Total punctuation characters : &quot; &lt;&lt; count ;
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 11:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que11.cpp -o que11 } ; if ($?) { .\que11 }
+Enter a string : hello , world;&#x27;;&quot;
+Total punctuation characters : 5</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q12">
+<h3>12. Program to count the total number of vowels and consonants in a string</h3>
+<div class="answer-box">
+<h4>Answer 12:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+bool isVowel(char ch){
+
+    if (ch == &#x27;a&#x27; || ch == &#x27;e&#x27; || ch == &#x27;i&#x27; || ch == &#x27;o&#x27; || ch == &#x27;u&#x27; || ch == &#x27;A&#x27; || ch == &#x27;E&#x27; || ch == &#x27;I&#x27; || ch == &#x27;O&#x27; || ch == &#x27;U&#x27;){
+        return true;
+    }
+
+    return false;
+}
+
+
+int main(){
+
+    string text;
+    int vowels = 0;
+    int consonants = 0;
+
+    cout &lt;&lt; &quot;Enter a string : &quot;;
+    getline(cin, text);
+
+    for (int i = 0; i &lt; text.length(); i++){
+            if (isVowel(text[i])){
+                vowels++;
+            }
+
+            if (!isVowel(text[i])){
+                consonants++;
+            }
+        
+    }
+
+    cout &lt;&lt; &quot;Vowels : &quot; &lt;&lt; vowels &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Consonants : &quot; &lt;&lt; consonants ;
+
+
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 12:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\03-Strings_39&gt; cd &quot;e:\dddddddd\CPP_Que\03-Strings_39\&quot; ; if ($?) { g++ que12.cpp -o que12 } ; if ($?) { .\que12 }
+Enter a string : hello workdl
+Vowels : 3
+Consonants : 9</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q13">
+<h3>13. Program to determine whether a given string is palindrome</h3>
+<div class="answer-box">
+<h4>Answer 13:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 13:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q14">
+<h3>14. Program to determine whether one string is a rotation of another</h3>
+<div class="answer-box">
+<h4>Answer 14:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 14:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q15">
+<h3>15. Program to divide a string in &#x27;N&#x27; equal parts.</h3>
+<div class="answer-box">
+<h4>Answer 15:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 15:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q16">
+<h3>16. Program to find all subsets of a string</h3>
+<div class="answer-box">
+<h4>Answer 16:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 16:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q17">
+<h3>17. Program to find all the permutations of a string</h3>
+<div class="answer-box">
+<h4>Answer 17:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 17:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q18">
+<h3>18. Program to find maximum and minimum occurring character in a string</h3>
+<div class="answer-box">
+<h4>Answer 18:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 18:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q19">
+<h3>19. Program to find Reverse of the string</h3>
+<div class="answer-box">
+<h4>Answer 19:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 19:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q20">
+<h3>20. Program to find the duplicate characters in a string</h3>
+<div class="answer-box">
+<h4>Answer 20:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 20:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q21">
+<h3>21. Program to find the duplicate words in a string</h3>
+<div class="answer-box">
+<h4>Answer 21:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 21:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q22">
+<h3>22. Program to find the frequency of characters</h3>
+<div class="answer-box">
+<h4>Answer 22:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 22:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q23">
+<h3>23. Program to find the largest and smallest word in a string</h3>
+<div class="answer-box">
+<h4>Answer 23:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 23:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q24">
+<h3>24. Program to find the longest repeating sequence in a string</h3>
+<div class="answer-box">
+<h4>Answer 24:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 24:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q25">
+<h3>25. Program to find the most repeated word in a text file</h3>
+<div class="answer-box">
+<h4>Answer 25:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 25:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q26">
+<h3>26. Program to find the number of the words in the given text file</h3>
+<div class="answer-box">
+<h4>Answer 26:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 26:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q27">
+<h3>27. Program to Get a Character From the Given String</h3>
+<div class="answer-box">
+<h4>Answer 27:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 27:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q28">
+<h3>28. Program to Insert a string into another string</h3>
+<div class="answer-box">
+<h4>Answer 28:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 28:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q29">
+<h3>29. Program to Print a New Line in String (Each word in newline)</h3>
+<div class="answer-box">
+<h4>Answer 29:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 29:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q30">
+<h3>30. Program to Print even length words</h3>
+<div class="answer-box">
+<h4>Answer 30:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 30:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q31">
+<h3>31. Program to print smallest and biggest possible palindrome word in a given string</h3>
+<div class="answer-box">
+<h4>Answer 31:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 31:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q32">
+<h3>32. Program to remove all the white spaces from a string</h3>
+<div class="answer-box">
+<h4>Answer 32:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 32:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q33">
+<h3>33. Program to replace lower-case characters with upper-case and vice-versa</h3>
+<div class="answer-box">
+<h4>Answer 33:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 33:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q34">
+<h3>34. Program to replace the spaces of a string with a specific character</h3>
+<div class="answer-box">
+<h4>Answer 34:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 34:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q35">
+<h3>35. Program to separate the Individual Characters from a String</h3>
+<div class="answer-box">
+<h4>Answer 35:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 35:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q36">
+<h3>36. Program to Splitting into a number of sub-strings</h3>
+<div class="answer-box">
+<h4>Answer 36:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 36:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q37">
+<h3>37. Program to swap two string variables without using third or temp variable.</h3>
+<div class="answer-box">
+<h4>Answer 37:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 37:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q38">
+<h3>38. Read two String user input and check if first contains second?</h3>
+<div class="answer-box">
+<h4>Answer 38:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 38:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q39">
+<h3>39. Reverse String Word by Word</h3>
+<div class="answer-box">
+<h4>Answer 39:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 39:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q40">
+<h3>40. Write a program to check if two Strings are created with same characters?</h3>
+<div class="answer-box">
+<h4>Answer 40:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 40:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q41">
+<h3>41. Write a program to find out first non repeated character from input String?</h3>
+<div class="answer-box">
+<h4>Answer 41:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 41:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q42">
+<h3>42. Write a C++ method to count all words in a string</h3>
+<div class="answer-box">
+<h4>Answer 42:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 42:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q43">
+<h3>43. Write a C++ method to count all vowels in a string</h3>
+<div class="answer-box">
+<h4>Answer 43:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 43:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q44">
+<h3>44. Write a C++ Program to Sort Names in an Alphabetical Order</h3>
+<div class="answer-box">
+<h4>Answer 44:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 44:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q45">
+<h3>45. Write a C++ method to count all the words in a string.</h3>
+<div class="answer-box">
+<h4>Answer 45:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 45:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q46">
+<h3>46. Write a C++ method to compute the future investment value at a given interest rate for a specified number of years.</h3>
+<div class="answer-box">
+<h4>Answer 46:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 46:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q47">
+<h3>47. Write a C++ method to print characters between two characters (i.e. A to P).</h3>
+<div class="answer-box">
+<h4>Answer 47:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 47:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q48">
+<h3>48. Write a C++ method to check whether a string is a valid password.</h3>
+<div class="answer-box">
+<h4>Answer 48:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 48:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q49">
+<h3>49. Write a C++ method to display the current date and time.</h3>
+<div class="answer-box">
+<h4>Answer 49:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 49:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q50">
+<h3>50. Write a C++ method that accepts three integers and returns true if one is the middle point between the other two integers, otherwise false</h3>
+<div class="answer-box">
+<h4>Answer 50:</h4>
+<pre><code></code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 50:</h4>
+<pre><code></code></pre>
+</div>
+</div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

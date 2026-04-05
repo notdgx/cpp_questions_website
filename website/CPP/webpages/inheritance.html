@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INHERITANCE - BCA 4205/25 Daisy Dhiman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="simple-nav">
+        <div class="nav-logo"><a href="../index.html">C++ Questions</a></div>
+      </nav>
+      
+
+    <div class="container">
+        <a href="../index.html" class="back-link">&larr; Back to Home</a>
+
+        <div class="questions-page">
+            <h1>INHERITANCE</h1>
+
+            <div class="question-index">
+                <h2>Questions List</h2>
+                <ul>
+                    <li><a href="#q1">1. Write a C++ program to create a class called Animal with a method called makeSound(). Create a derived class called Cat that overrides the makeSound() method to bark.</a></li>
+                    <li><a href="#q2">2. Write a C++ program to create a class called Vehicle with a method called drive(). Create a derived class called Car that overrides the drive() method to print &quot;Repairing a car&quot;.</a></li>
+                    <li><a href="#q3">3. Write a C++ program to create a class called Shape with a method called getArea(). Create a derived class called Rectangle that overrides the getArea() method to calculate the area of a rectangle.</a></li>
+                    <li><a href="#q4">4. Write a C++ program to create a class called Employee with methods called work() and getSalary(). Create a derived class called HRManager that overrides the work() method and adds a new method called addEmployee().</a></li>
+                    <li><a href="#q5">5. Write a C++ program to create a class known as &quot;BankAccount&quot; with methods called deposit() and withdraw(). Create a derived class called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred.</a></li>
+                    <li><a href="#q6">6. Write a C++ program to create a class called Animal with a method named move(). Create a derived class called Cheetah that overrides the move() method to run.</a></li>
+                    <li><a href="#q7">7. Write a C++ program to create a class known as Person with methods called getFirstName() and getLastName(). Create a derived class called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee&#x27;s job title.</a></li>
+                    <li><a href="#q8">8. Write a C++ program to create a class called Shape with methods called getPerimeter() and getArea(). Create a derived class called Circle that overrides the getPerimeter() and getArea() methods to calculate the area and perimeter of a circle.</a></li>
+                    <li><a href="#q9">9. Write a C++ program to create a vehicle class hierarchy. The base class should be Vehicle, with derived classes Truck, Car and Motorcycle. Each derived class should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.</a></li>
+                    <li><a href="#q10">10. Write a C++ program that creates a class hierarchy for employees of a company. The base class should be Employee, with derived classes Manager, Developer, and Programmer. Each derived class should have properties such as name, address, salary, and job title. Implement methods for calculating bonuses, generating performance reports, and managing projects.</a></li>
+                </ul>
+            </div>
+
+<div class="question-section" id="q1">
+<h3>1. Write a C++ program to create a class called Animal with a method called makeSound(). Create a derived class called Cat that overrides the makeSound() method to bark.</h3>
+<div class="answer-box">
+<h4>Answer 1:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Animal{
+
+public:
+    virtual void makeSound(){
+        cout &lt;&lt; &quot;Animal sound&quot;;
+    }
+};
+
+
+class Cat : public Animal{
+
+public:
+    void makeSound(){
+        cout &lt;&lt; &quot;Bark&quot;;
+    }
+};
+
+
+int main(){
+
+    Animal animal;
+    Cat cat;
+
+    animal.makeSound();
+    cat.makeSound();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 1:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\04-Multi_Dimension_Arrays_12&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que1.cpp -o que1 } ; if ($?) { .\que1 }
+Animal soundBark</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q2">
+<h3>2. Write a C++ program to create a class called Vehicle with a method called drive(). Create a derived class called Car that overrides the drive() method to print &quot;Repairing a car&quot;.</h3>
+<div class="answer-box">
+<h4>Answer 2:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Vehicle{
+
+    public:
+        virtual void drive(){
+            cout &lt;&lt; &quot;Driving vehicle&quot;&lt;&lt;endl;
+        }
+};
+
+
+class Car : public Vehicle{
+
+    public:
+
+        void drive(){
+            cout &lt;&lt; &quot;driving car&quot;;
+        }
+
+};
+
+
+int main(){
+
+    Vehicle vehicle;
+    Car car;
+
+    vehicle.drive();
+    car.drive();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 2:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que2.cpp -o que2 } ; if ($?) { .\que2 }
+Driving vehicle
+driving car</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q3">
+<h3>3. Write a C++ program to create a class called Shape with a method called getArea(). Create a derived class called Rectangle that overrides the getArea() method to calculate the area of a rectangle.</h3>
+<div class="answer-box">
+<h4>Answer 3:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Shape{
+
+    public:
+
+        virtual int getArea(){
+            return 0;
+        }
+};
+
+
+class Rectangle : public Shape{
+
+    private:
+
+        int length;
+        int width;
+
+    public:
+
+        Rectangle(int l, int w){
+            length = l;
+            width = w;
+        }
+
+        int getArea(){
+            return length * width;
+        }
+    };
+
+
+int main(){
+
+    Rectangle rectangle(9, 6);
+
+    cout &lt;&lt; &quot;Area of rectangle : &quot; &lt;&lt; rectangle.getArea() ;
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 3:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que3.cpp -o que3 } ; if ($?) { .\que3 }
+Area of rectangle : 54</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q4">
+<h3>4. Write a C++ program to create a class called Employee with methods called work() and getSalary(). Create a derived class called HRManager that overrides the work() method and adds a new method called addEmployee().</h3>
+<div class="answer-box">
+<h4>Answer 4:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Employee{
+
+
+    protected:
+        int salary;
+
+    public:
+
+        Employee(int s){
+            salary = s;
+        }
+
+        virtual void work(){
+            cout &lt;&lt; &quot;Employee is working \n&quot;; 
+        }
+
+        int getSalary(){
+            return salary;
+        }
+};
+
+
+class HRManager : public Employee{
+
+    public:
+        HRManager(int s) : Employee(s){
+        }
+
+        void work(){
+            cout &lt;&lt; &quot;HR Manager is working t\n&quot;;
+        }
+
+        void addEmployee(){
+            cout &lt;&lt; &quot;employee added\n&quot;;
+        }
+};
+
+
+int main(){
+
+    HRManager hr(50000);
+
+    hr.work();
+    hr.addEmployee();
+    cout &lt;&lt; &quot;Salary : &quot; &lt;&lt; hr.getSalary() ;
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 4:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que4.cpp -o que4 } ; if ($?) { .\que4 }
+HR Manager is working t
+employee added
+Salary : 50000</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q5">
+<h3>5. Write a C++ program to create a class known as &quot;BankAccount&quot; with methods called deposit() and withdraw(). Create a derived class called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred.</h3>
+<div class="answer-box">
+<h4>Answer 5:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class BankAccount{
+
+protected:
+    int balance;
+
+public:
+    BankAccount(int amount){
+        balance = amount;
+    }
+
+    void deposit(int amount){
+        balance += amount;
+    }
+
+    virtual void withdraw(int amount){
+        if (amount &gt; balance){
+            cout &lt;&lt; &quot;not enough balance\n&quot;;
+        }
+
+        else{
+            balance -= amount;
+            cout &lt;&lt; &quot;Withdrawed \n&quot;;
+        }
+    }
+
+    int getBalance(){
+        return balance;
+    }
+};
+
+
+class SavingsAccount : public BankAccount{
+
+public:
+    SavingsAccount(int amount) : BankAccount(amount){
+    }
+
+    void withdraw(int amount){
+        if (balance - amount &lt;100){
+            cout &lt;&lt; &quot;min blaance 100 required \n&quot;;
+        }
+
+        else{
+            balance -= amount;
+            cout &lt;&lt; &quot;Withdrawed \n&quot;;
+        }
+    }
+};
+
+
+int main(){
+
+    SavingsAccount account(500);
+    int a;
+    int b;
+
+    cout &lt;&lt; &quot;Current balance : &quot; &lt;&lt; account.getBalance()&lt;&lt;endl;
+    cout &lt;&lt; &quot;Enter deposit amount : &quot;;
+    cin &gt;&gt; a;
+    
+    account.deposit(a);
+    
+    cout &lt;&lt; &quot;Current balance : &quot; &lt;&lt; account.getBalance()&lt;&lt;endl;
+    cout &lt;&lt; &quot;Enter withdraw amount : &quot;;
+    cin &gt;&gt; b;
+
+    account.withdraw(b);
+    cout &lt;&lt; &quot;Current balance : &quot; &lt;&lt; account.getBalance();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 5:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que5.cpp -o que5 } ; if ($?) { .\que5 }
+Current balance : 500
+Enter deposit amount : 400
+Current balance : 900
+Enter withdraw amount : 866
+min blaance 100 required
+Current balance : 900</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q6">
+<h3>6. Write a C++ program to create a class called Animal with a method named move(). Create a derived class called Cheetah that overrides the move() method to run.</h3>
+<div class="answer-box">
+<h4>Answer 6:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Animal{
+
+public:
+    virtual void move(){
+        cout &lt;&lt; &quot;moves\n&quot;;
+    }
+};
+
+
+class Cheetah : public Animal{
+
+public:
+    void move(){
+        cout &lt;&lt; &quot;Cheetah runs&quot;;
+    }
+};
+
+
+int main(){
+
+    Animal animal;
+    Cheetah cheetah;
+
+    animal.move();
+    cheetah.move();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 6:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que6.cpp -o que6 } ; if ($?) { .\que6 }
+moves
+Cheetah runs</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q7">
+<h3>7. Write a C++ program to create a class known as Person with methods called getFirstName() and getLastName(). Create a derived class called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee&#x27;s job title.</h3>
+<div class="answer-box">
+<h4>Answer 7:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+class Person{
+
+protected:
+    string firstName;
+    string lastName;
+
+public:
+    Person(string f, string l){
+        firstName = f;
+        lastName = l;
+    }
+
+    string getFirstName(){
+        return firstName;
+    }
+
+    virtual string getLastName(){
+        return lastName;
+    }
+};
+
+
+class Employee : public Person{
+
+private:
+    int employeeId;
+    string jobTitle;
+
+public:
+    Employee(string f, string l, int id, string title) : Person(f, l){
+        employeeId = id;
+        jobTitle = title;
+    }
+
+    int getEmployeeId(){
+        return employeeId;
+    }
+
+    string getLastName(){
+        return lastName + &quot; (&quot; + jobTitle + &quot;)&quot;;
+    }
+};
+
+
+int main(){
+
+    Employee emp(&quot;Ram&quot;, &quot;Sahrma&quot;, 300, &quot;HR&quot;);
+
+    cout &lt;&lt; &quot;First Name: &quot; &lt;&lt; emp.getFirstName() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Last Name with Title: &quot; &lt;&lt; emp.getLastName() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Employee ID: &quot; &lt;&lt; emp.getEmployeeId() &lt;&lt; &quot;\n&quot;;
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 7:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que7.cpp -o que7 } ; if ($?) { .\que7 }
+First Name: Ram
+Last Name with Title: Sahrma (HR)
+Employee ID: 300</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q8">
+<h3>8. Write a C++ program to create a class called Shape with methods called getPerimeter() and getArea(). Create a derived class called Circle that overrides the getPerimeter() and getArea() methods to calculate the area and perimeter of a circle.</h3>
+<div class="answer-box">
+<h4>Answer 8:</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+
+class Shape{
+
+    public:
+
+        virtual int getPerimeter(){
+            return 0;
+        }
+
+        virtual int getArea(){
+            return 0;
+        }
+};
+
+
+class Circle : public Shape{
+
+    private:
+
+        int radius;
+
+    public:
+
+        Circle(int r){
+            radius = r;
+        }
+
+        int getPerimeter(){
+            return (2 * 22 * radius) / 7;
+        }
+
+        int getArea(){
+            return (22 * radius * radius) / 7;
+        }
+};
+
+
+int main(){
+
+
+    Circle circle(7);
+
+    cout &lt;&lt; &quot;Perimeter of circle : &quot; &lt;&lt; circle.getPerimeter() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Area of circle : &quot; &lt;&lt; circle.getArea() ;
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 8:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que8.cpp -o que8 } ; if ($?) { .\que8 }
+Perimeter of circle : 44
+Area of circle : 154</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q9">
+<h3>9. Write a C++ program to create a vehicle class hierarchy. The base class should be Vehicle, with derived classes Truck, Car and Motorcycle. Each derived class should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.</h3>
+<div class="answer-box">
+<h4>Answer 9:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+class Vehicle{
+
+protected:
+    string make;
+    string model;
+    int year;
+    string fuelType;
+
+public:
+    Vehicle(string mk, string md, int y, string fuel){
+        make = mk;
+        model = md;
+        year = y;
+        fuelType = fuel;
+    }
+
+    virtual int fuelEfficiency(){
+        return 0;
+    }
+
+    virtual int maxSpeed(){
+        return 0;
+    }
+
+    int distanceTraveled(int fuelUsed){
+        return fuelEfficiency() * fuelUsed;
+    }
+
+    void showDetails(){
+        cout &lt;&lt; &quot;Make : &quot; &lt;&lt; make &lt;&lt; &quot; , Model : &quot; &lt;&lt; model &lt;&lt; &quot;, Year : &quot; &lt;&lt; year &lt;&lt; &quot; , Fuel : &quot; &lt;&lt; fuelType &lt;&lt; &quot;\n&quot;;
+    }
+};
+
+
+class Truck : public Vehicle{
+
+    public:
+        Truck(string mk, string md, int y, string fuel) : Vehicle(mk, md, y, fuel){
+        }
+
+        int fuelEfficiency(){
+            return 8;
+        }
+
+        int maxSpeed(){
+            return 120;
+        }
+    };
+
+
+class Car : public Vehicle{
+
+    public:
+
+        Car(string mk, string md, int y, string fuel) : Vehicle(mk, md, y, fuel){
+        }
+
+        int fuelEfficiency(){
+            return 15;
+        }
+
+        int maxSpeed(){
+            return 180;
+        }
+
+    };
+
+
+class Motorcycle : public Vehicle{
+
+    public:
+        Motorcycle(string mk, string md, int y, string fuel) : Vehicle(mk, md, y, fuel){
+        }
+
+        int fuelEfficiency(){
+            return 35;
+        }
+
+        int maxSpeed(){
+            return 140;
+        }
+};
+
+
+int main(){
+
+    Truck truck(&quot;Tata&quot;, &quot;Prima&quot;, 2022, &quot;Diesel&quot;);
+    Car car(&quot;Honda&quot;, &quot;City&quot;, 2023, &quot;Petrol&quot;);
+    Motorcycle bike(&quot;Yamaha&quot;, &quot;R15&quot;, 2024, &quot;Petrol&quot;);
+
+    int fuelUsed;
+
+    cout &lt;&lt; &quot;Enter fuel used : &quot;;
+    cin &gt;&gt; fuelUsed;
+
+    cout &lt;&lt; &quot;\n Truck details:\n&quot;;
+    truck.showDetails();
+    cout &lt;&lt; &quot;Fuel efficiency : &quot; &lt;&lt; truck.fuelEfficiency() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Distance traveled : &quot; &lt;&lt; truck.distanceTraveled(fuelUsed) &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Max speed : &quot; &lt;&lt; truck.maxSpeed() &lt;&lt; &quot;\n&quot;;
+
+    cout &lt;&lt; &quot;\nCar details:\n&quot;;
+    car.showDetails();
+    cout &lt;&lt; &quot;Fuel efficiency : &quot; &lt;&lt; car.fuelEfficiency() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Distance traveled : &quot; &lt;&lt; car.distanceTraveled(fuelUsed) &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Max speed : &quot; &lt;&lt; car.maxSpeed() &lt;&lt; &quot;\n&quot;;
+
+    cout &lt;&lt; &quot;\nMotorcycle details:\n&quot;;
+    bike.showDetails();
+    cout &lt;&lt; &quot;Fuel efficiency : &quot; &lt;&lt; bike.fuelEfficiency() &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Distance traveled : &quot; &lt;&lt; bike.distanceTraveled(fuelUsed) &lt;&lt; &quot;\n&quot;;
+    cout &lt;&lt; &quot;Max speed : &quot; &lt;&lt; bike.maxSpeed() &lt;&lt; &quot;\n&quot;;
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 9:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que\06-Inheritance_10&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que9.cpp -o que9 } ; if ($?) { .\que9 }
+Enter fuel used : 45
+
+ Truck details:
+Make : Tata , Model : Prima, Year : 2022 , Fuel : Diesel
+Fuel efficiency : 8
+Distance traveled : 360
+Max speed : 120
+
+Car details:
+Make : Honda , Model : City, Year : 2023 , Fuel : Petrol
+Fuel efficiency : 15
+Distance traveled : 675
+Max speed : 180
+
+Motorcycle details:
+Make : Yamaha , Model : R15, Year : 2024 , Fuel : Petrol
+Fuel efficiency : 35
+Distance traveled : 1575
+Max speed : 140</code></pre>
+</div>
+</div>
+
+<div class="question-section" id="q10">
+<h3>10. Write a C++ program that creates a class hierarchy for employees of a company. The base class should be Employee, with derived classes Manager, Developer, and Programmer. Each derived class should have properties such as name, address, salary, and job title. Implement methods for calculating bonuses, generating performance reports, and managing projects.</h3>
+<div class="answer-box">
+<h4>Answer 10:</h4>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+
+class Employee{
+
+protected:
+    string name;
+    string address;
+    int salary;
+    string jobTitle;
+
+    public:
+
+        Employee(string n, string a, int s, string j){
+            name = n;
+            address = a;
+            salary = s;
+            jobTitle = j;
+        }
+
+        virtual int calculateBonus(){
+            return (salary*2)/100;
+        }
+
+        virtual void performanceReport(){
+            cout &lt;&lt; name &lt;&lt; &quot; has good performance &quot; &lt;&lt;endl;
+        }
+
+        virtual void manageProject(){
+            cout &lt;&lt; name &lt;&lt; &quot; is managing project &quot;&lt;&lt;endl;
+        }
+
+        void showBasicInfo(){
+            cout &lt;&lt; &quot;Name: &quot; &lt;&lt; name &lt;&lt; &quot;, Address :  &quot; &lt;&lt; address &lt;&lt; &quot;, Salary: &quot; &lt;&lt; salary &lt;&lt; &quot;, Job Title: &quot; &lt;&lt; jobTitle &lt;&lt;endl;
+        }
+};
+
+
+class Manager : public Employee{
+
+public:
+    Manager(string n, string a, int s, string j) : Employee(n, a, s, j){
+    }
+ 
+    int calculateBonus(){
+        return (salary * 10) / 100;
+    }
+
+    void performanceReport(){
+        cout &lt;&lt; name &lt;&lt; &quot; manager perofrmance is good &quot;&lt;&lt;endl;
+    }
+
+    void manageProject(){
+        cout &lt;&lt; name &lt;&lt; &quot; manager is managing project &quot;&lt;&lt;endl;
+    }
+};
+
+
+class Developer : public Employee{
+
+public:
+    Developer(string n, string a, int s, string j) : Employee(n, a, s, j){
+    }
+
+    int calculateBonus(){
+        return (salary * 15) / 100;
+    }
+
+    void performanceReport(){
+        cout &lt;&lt; name &lt;&lt; &quot; is developer and good at work&quot;&lt;&lt;endl;
+    }
+
+    void manageProject(){
+        cout &lt;&lt; name &lt;&lt; &quot; is managing code&quot;&lt;&lt;endl;
+    }
+};
+
+
+class Programmer : public Employee{
+
+public:
+    Programmer(string n, string a, int s, string j) : Employee(n, a, s, j){
+    }
+
+    int calculateBonus(){
+        return (salary * 12) / 100;
+    }
+
+    void performanceReport(){
+        cout &lt;&lt; name &lt;&lt; &quot; is programmer doing good work&quot;&lt;&lt;endl;
+    }
+
+    void manageProject(){
+        cout &lt;&lt; name &lt;&lt; &quot; is managing programs&quot;&lt;&lt;endl;
+    }
+};
+
+
+int main(){
+
+    Manager manager(&quot;Rahul&quot;, &quot;Delhi&quot;, 80000, &quot;Manager&quot;);
+    Developer developer(&quot;Aman&quot;, &quot;Pune&quot;, 60000, &quot;Developer&quot;);
+    Programmer programmer(&quot;Neha&quot;, &quot;Jaipur&quot;, 50000, &quot;Programmer&quot;);
+
+    cout &lt;&lt; &quot;Manager :\n&quot;;
+    manager.showBasicInfo();
+    cout &lt;&lt; &quot;Bonus : &quot; &lt;&lt; manager.calculateBonus() &lt;&lt; &quot;\n&quot;;
+    manager.performanceReport();
+    manager.manageProject();
+
+    cout &lt;&lt; &quot;\nDeveloper : \n&quot;;
+    developer.showBasicInfo();
+    cout &lt;&lt; &quot;Bonus : &quot; &lt;&lt; developer.calculateBonus() &lt;&lt; &quot;\n&quot;;
+    developer.performanceReport();
+    developer.manageProject();
+
+    cout &lt;&lt; &quot;\nProgrammer : \n&quot;;
+    programmer.showBasicInfo();
+    cout &lt;&lt; &quot;Bonus : &quot; &lt;&lt; programmer.calculateBonus() &lt;&lt; &quot;\n&quot;;
+    programmer.performanceReport();
+    programmer.manageProject();
+
+    return 0;
+}</code></pre>
+</div>
+<div class="answer-box">
+<h4>Output 10:</h4>
+<pre><code>PS E:\dddddddd\CPP_Que&gt; cd &quot;e:\dddddddd\CPP_Que\06-Inheritance_10\&quot; ; if ($?) { g++ que10.cpp -o que10 } ; if ($?) { .\que10 }
+Manager :
+Name: Rahul, Address :  Delhi, Salary: 80000, Job Title: Manager
+Bonus : 8000
+Rahul manager perofrmance is good
+Rahul manager is managing project
+
+Developer :
+Name: Aman, Address :  Pune, Salary: 60000, Job Title: Developer
+Bonus : 9000
+Aman is developer and good at work
+Aman is managing code
+
+Programmer :
+Name: Neha, Address :  Jaipur, Salary: 50000, Job Title: Programmer
+Bonus : 6000
+Neha is programmer doing good work
+Neha is managing programs</code></pre>
+</div>
+</div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>DAISY DHIMAN BCA 4205/25 SEC A</p>
+    </footer>
+</body>
+</html>

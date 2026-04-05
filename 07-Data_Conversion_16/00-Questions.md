@@ -1,0 +1,16 @@
+1. C++ Program to convert String to int
+2. C++ Program to convert int to String
+3. C++ Program to convert String to long
+4. C++ Program to convert long to String
+5. C++ Program to convert String to float
+6. C++ Program to convert float to String
+7. C++ Program to convert String to double
+8. C++ Program to convert double to String
+9. C++ Program to convert char to int
+10. C++ Program to convert int to char
+11. C++ Program to convert Binary to Decimal
+12. C++ Program to convert Decimal to Binary
+13. C++ Program to convert Hex to Decimal
+14. C++ Program to convert Decimal to Hex
+15. C++ Program to convert Octal to Decimal
+16. C++ Program to convert Decimal to Octal
