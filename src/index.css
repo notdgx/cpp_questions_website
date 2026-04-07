@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #000000;
+  --bg-intro: #0a0a0f;
+  --text-primary: #ffffff;
+  --text-secondary: #86868b;
+  --text-tertiary: #6e6e73;
+  --divider: rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-highlight: rgba(255, 255, 255, 0.25);
+  --accent-blue: #2997ff;
+  --accent-purple: #8238dc;
+  --accent-pink: #f75cb7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  pointer-events: auto;
+}
+
+.liquid-glass {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter);
+  -webkit-backdrop-filter: brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter);
+  border: 1px solid var(--glass-border);
+  border-top-color: rgba(255, 255, 255, 0.3);
+  border-left-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(-8px -10px 46px rgba(0, 0, 0, 0.37));
+  border-radius: 16px;
+  transition: all 220ms ease;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 6px 6px 0 -6px rgba(255, 255, 255, 0.7),
+    inset 0 0 8px 1px rgba(255, 255, 255, 0.45);
+}
+
+.liquid-glass:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.liquid-glass-trace {
+  --mx: 50%;
+  --my: 50%;
+  --trace-o: 0;
+}
+
+.liquid-glass-trace:hover {
+  background: var(--glass-bg);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 10px 34px rgba(0, 0, 0, 0.44),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.liquid-glass-trace::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--trace-o);
+  transition: opacity 160ms ease;
+  background:
+    radial-gradient(
+      180px circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.09) 28%,
+      rgba(255, 255, 255, 0) 62%
+    ),
+    radial-gradient(
+      110px circle at var(--mx) var(--my),
+      rgba(41, 151, 255, 0.2) 0%,
+      rgba(130, 56, 220, 0.08) 45%,
+      rgba(130, 56, 220, 0) 75%
+    );
+  mix-blend-mode: screen;
+}
+
+.liquid-glass-pill {
+  border-radius: 100px;
+}
+
+.liquid-glass-circle {
+  border-radius: 9999px;
+}
+
+.liquid-glass-sm {
+  border-radius: 12px;
+  backdrop-filter: brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter);
+  -webkit-backdrop-filter: brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter);
+}
+
+.liquid-glass-static:hover {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  transform: none;
+}
+
+.hljs {
+  background: transparent !important;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-track-transparent {
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.scrollbar-thumb-white\/20::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thumb-white\/20::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thumb-white\/20::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
