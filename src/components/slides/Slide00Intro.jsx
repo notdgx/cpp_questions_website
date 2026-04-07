@@ -16,7 +16,7 @@ const MetaItem = ({ label, value }) => (
   </div>
 )
 
-const Slide00Intro = ({ isActive, totalProblems, bgVideo }) => {
+const Slide00Intro = ({ isActive, totalProblems, bgVideo, blurThemeLabel, onToggleBlurTheme }) => {
   const [activationCount, setActivationCount] = useState(0)
   const wasActive = useRef(false)
 
@@ -34,11 +34,21 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo }) => {
       <BlurReveal isActive={isActive} delay={0.05} duration={0.9}>
         <div className="relative z-[2] flex items-start justify-between px-[5%] pt-[3.5%] md:items-center">
           <Logo />
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-right sm:flex sm:gap-6 md:gap-8">
-            <MetaItem label="Type" value="Assignment" />
-            <MetaItem label="Problems" value={String(totalProblems)} />
-            <MetaItem label="Topics" value="11" />
-            <MetaItem label="Stack" value="C++" />
+          <div className="flex flex-col items-end gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={onToggleBlurTheme}
+              className="liquid-glass liquid-glass-pill px-3 py-1.5 text-[11px] tracking-wide text-white/90"
+            >
+              {blurThemeLabel}
+            </button>
+
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-right sm:flex sm:gap-6 md:gap-8">
+              <MetaItem label="Type" value="Assignment" />
+              <MetaItem label="Problems" value={String(totalProblems)} />
+              <MetaItem label="Topics" value="11" />
+              <MetaItem label="Stack" value="C++" />
+            </div>
           </div>
         </div>
       </BlurReveal>

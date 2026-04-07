@@ -19,6 +19,12 @@ import WaterBubbleTransition from './components/animated/WaterBubbleTransition'
 import SolutionModal from './components/shared/SolutionModal'
 
 const introVideo = 'https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8'
+const blurThemes = ['smooth', 'frosted', 'liquid']
+const blurThemeLabels = {
+  smooth: 'Smooth Blur',
+  frosted: 'Frosted Blur',
+  liquid: 'Liquid Glass'
+}
 
 const topicSlideVideos = [
   'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8',
@@ -50,11 +56,17 @@ const topicSlideComponents = [
 
 const App = () => {
   const [active, setActive] = useState(0)
+  const [blurThemeIndex, setBlurThemeIndex] = useState(0)
   const [touchStartX, setTouchStartX] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedTopicIndex, setSelectedTopicIndex] = useState(null)
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null)
   const [clickOrigin, setClickOrigin] = useState({ x: 0, y: 0 })
+  const blurTheme = blurThemes[blurThemeIndex]
+
+  const toggleBlurTheme = () => {
+    setBlurThemeIndex((index) => (index + 1) % blurThemes.length)
+  }
 
   const totalProblems = useMemo(
     () => topics.slice(1).reduce((acc, topic) => acc + topic.questions.length, 0),
@@ -91,7 +103,13 @@ const App = () => {
     {
       id: 0,
       render: () => (
-        <Slide00Intro isActive={active === 0} totalProblems={totalProblems} bgVideo={introVideo} />
+        <Slide00Intro
+          isActive={active === 0}
+          totalProblems={totalProblems}
+          bgVideo={introVideo}
+          blurThemeLabel={blurThemeLabels[blurTheme]}
+          onToggleBlurTheme={toggleBlurTheme}
+        />
       )
     },
     ...topicSlideComponents.map((SlideComponent, index) => {
@@ -146,7 +164,7 @@ const App = () => {
   }, [modalOpen, maxSlide, selectedTopic])
 
   return (
-    <>
+    <div className={`h-full w-full blur-theme-${blurTheme}`}>
       <div
         className="relative h-screen w-screen overflow-hidden bg-black"
         onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
@@ -212,7 +230,7 @@ const App = () => {
         onNext={() => setActive((prev) => Math.min(prev + 1, maxSlide))}
         hidden={modalOpen}
       />
-    </>
+    </div>
   )
 }
 
