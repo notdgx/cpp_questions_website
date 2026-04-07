@@ -78,7 +78,7 @@ A student assignment repository of C++ problem-solving solutions, presented thro
 
 ## Deployment (GitHub Pages)
 
-- Vite derives Pages base from `GITHUB_REPOSITORY` during GitHub Actions builds (e.g. `/cpp_questions_website/`) and uses `base: './'` locally.
+- Vite derives Pages base from `GITHUB_REPOSITORY` during GitHub Actions builds (e.g. `/cpp_questions_website/`), falling back to `/` if unavailable, and uses `base: './'` locally.
 - Deployment options in this repo:
   - Script: `npm run deploy` (uses `gh-pages -d dist`)
   - CI: GitHub Actions workflow publishes `dist` on pushes to `main`.
