@@ -48,8 +48,6 @@ const topicSlideComponents = [
   Slide11
 ]
 
-const maxSlide = 11
-
 const App = () => {
   const [active, setActive] = useState(0)
   const [touchStartX, setTouchStartX] = useState(null)
@@ -62,21 +60,6 @@ const App = () => {
     () => topics.slice(1).reduce((acc, topic) => acc + topic.questions.length, 0),
     []
   )
-
-  useEffect(() => {
-    const onKeyDown = (e) => {
-      if (modalOpen) return
-      if (e.code === 'ArrowRight' || e.code === 'ArrowDown' || e.code === 'Space') {
-        setActive((prev) => Math.min(prev + 1, maxSlide))
-      }
-      if (e.code === 'ArrowLeft' || e.code === 'ArrowUp') {
-        setActive((prev) => Math.max(prev - 1, 0))
-      }
-    }
-
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [modalOpen])
 
   const openQuestion = (topicIndex, questionIndex, origin) => {
     setSelectedTopicIndex(topicIndex)
@@ -126,6 +109,24 @@ const App = () => {
     })
   ]
 
+  const totalSlides = slides.length
+  const maxSlide = totalSlides - 1
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (modalOpen) return
+      if (e.code === 'ArrowRight' || e.code === 'ArrowDown' || e.code === 'Space') {
+        setActive((prev) => Math.min(prev + 1, maxSlide))
+      }
+      if (e.code === 'ArrowLeft' || e.code === 'ArrowUp') {
+        setActive((prev) => Math.max(prev - 1, 0))
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [modalOpen, maxSlide])
+
   return (
     <div
       className="relative h-screen w-screen overflow-hidden bg-black"
@@ -153,7 +154,7 @@ const App = () => {
         )
       })}
 
-      <NavDots active={active} setActive={setActive} total={12} hidden={modalOpen} />
+      <NavDots active={active} setActive={setActive} total={totalSlides} hidden={modalOpen} />
       <NavArrows
         active={active}
         max={maxSlide}

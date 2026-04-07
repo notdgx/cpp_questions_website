@@ -37,7 +37,7 @@ const WaterBubbleTransition = ({ open, clickOrigin, onClose, children }) => {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(circle at center, rgba(41,151,255,0.08) 0%, rgba(130,56,220,0.08) 42%, rgba(0,0,0,0.22) 100%)',
+            'radial-gradient(circle at center, rgba(41,151,255,0.12) 0%, rgba(130,56,220,0.1) 45%, rgba(0,0,0,0.06) 100%)',
           ...originStyle
         }}
         initial={{ scale: 0, borderRadius: '50%' }}

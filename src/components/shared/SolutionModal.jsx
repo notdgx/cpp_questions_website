@@ -55,8 +55,10 @@ const SolutionModal = ({
   if (!question) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-black/72 backdrop-blur-xl">
-      <div className="liquid-glass my-8 mx-auto flex max-h-[88vh] w-[90%] max-w-5xl flex-col overflow-hidden rounded-3xl">
+    <div className="fixed inset-0 z-50 flex flex-col">
+      <div className="absolute inset-0 bg-black/24 backdrop-blur-[10px]" />
+
+      <div className="liquid-glass liquid-glass-static modal-hoverless relative my-8 mx-auto flex max-h-[88vh] w-[90%] max-w-5xl flex-col overflow-hidden rounded-3xl">
         <div className="flex items-start justify-between border-b border-white/10 px-6 pt-6 pb-4">
           <div>
             <p className="text-[12px] tracking-widest uppercase text-[var(--text-secondary)]">Q{question.id} · {topicTitle}</p>
@@ -95,7 +97,7 @@ const SolutionModal = ({
               </button>
             </div>
 
-            <div className="liquid-glass overflow-hidden rounded-xl">
+            <div className="liquid-glass modal-answer-box overflow-hidden rounded-xl">
               <pre className="bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
                 <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
               </pre>
@@ -104,7 +106,7 @@ const SolutionModal = ({
 
           <div className="flex flex-col gap-3">
             <p className="text-[12px] tracking-widest text-[var(--text-secondary)]">Console Output</p>
-            <div className="liquid-glass rounded-xl p-5">
+            <div className="liquid-glass liquid-glass-static rounded-xl p-5">
               <pre className="whitespace-pre-wrap font-mono text-[13px] leading-[1.6] text-[#30d158]">{question.output || 'No output provided.'}</pre>
             </div>
           </div>
