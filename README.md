@@ -78,7 +78,7 @@ A student assignment repository of C++ problem-solving solutions, presented thro
 
 ## Deployment (GitHub Pages)
 
-- Vite is configured with `base: './'` for static relative-path deployment.
+- Vite uses `base: '/cpp_questions_website/'` during GitHub Actions builds and `base: './'` locally.
 - Deployment options in this repo:
   - Script: `npm run deploy` (uses `gh-pages -d dist`)
   - CI: GitHub Actions workflow publishes `dist` on pushes to `main`.
@@ -102,4 +102,3 @@ A student assignment repository of C++ problem-solving solutions, presented thro
 ## License
 
 - No license 
-
