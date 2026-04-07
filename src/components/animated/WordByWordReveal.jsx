@@ -13,9 +13,13 @@ const WordByWordReveal = ({
   const words = String(text ?? '').split(' ')
 
   return (
-    <span className={className}>
+    <div className={className} style={{ display: 'flex', flexWrap: 'wrap' }}>
       {words.map((word, index) => (
-        <span key={`${word}-${index}`} className="mr-[0.27em] inline-block overflow-hidden align-bottom">
+        <span
+          key={`${word}-${index}`}
+          className="inline-block overflow-hidden align-bottom"
+          style={{ marginRight: '0.27em', marginBottom: '0.1em' }}
+        >
           <motion.span
             className="inline-block"
             initial={{ y: '100%' }}
@@ -30,7 +34,7 @@ const WordByWordReveal = ({
           </motion.span>
         </span>
       ))}
-    </span>
+    </div>
   )
 }
 

@@ -140,50 +140,50 @@ const App = () => {
           setTouchStartX(null)
         }}
       >
-      {slides.map((slide) => {
-        const isActive = active === slide.id
-        return (
-          <motion.section
-            key={slide.id}
-            className="absolute inset-0"
-            animate={{ opacity: isActive ? 1 : 0 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-            style={{ zIndex: isActive ? 10 : 0, pointerEvents: isActive ? 'auto' : 'none' }}
-          >
-            {slide.render()}
-          </motion.section>
-        )
-      })}
+        {slides.map((slide) => {
+          const isActive = active === slide.id
+          return (
+            <motion.section
+              key={slide.id}
+              className="absolute inset-0"
+              animate={{ opacity: isActive ? 1 : 0 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+              style={{ zIndex: isActive ? 10 : 0, pointerEvents: isActive ? 'auto' : 'none' }}
+            >
+              {slide.render()}
+            </motion.section>
+          )
+        })}
 
-      <WaterBubbleTransition open={modalOpen} clickOrigin={clickOrigin}>
-        <SolutionModal
-          question={selectedQuestion}
-          topicTitle={selectedTopic?.title ?? ''}
-          total={selectedTopic?.questions.length ?? 0}
-          onClose={closeModal}
-          onPrev={goPrevQuestion}
-          onNext={goNextQuestion}
-          hasPrev={(selectedQuestionIndex ?? 0) > 0}
-          hasNext={
-            selectedTopic
-              ? (selectedQuestionIndex ?? 0) < selectedTopic.questions.length - 1
-              : false
-          }
-        />
-      </WaterBubbleTransition>
-
-      <svg width="0" height="0" className="absolute pointer-events-none opacity-0">
-        <filter id="liquidDisplacementFilter">
-          <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="2" result="turbulence" />
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="turbulence"
-            scale="180"
-            xChannelSelector="R"
-            yChannelSelector="G"
+        <WaterBubbleTransition open={modalOpen} clickOrigin={clickOrigin}>
+          <SolutionModal
+            question={selectedQuestion}
+            topicTitle={selectedTopic?.title ?? ''}
+            total={selectedTopic?.questions.length ?? 0}
+            onClose={closeModal}
+            onPrev={goPrevQuestion}
+            onNext={goNextQuestion}
+            hasPrev={(selectedQuestionIndex ?? 0) > 0}
+            hasNext={
+              selectedTopic
+                ? (selectedQuestionIndex ?? 0) < selectedTopic.questions.length - 1
+                : false
+            }
           />
-        </filter>
-      </svg>
+        </WaterBubbleTransition>
+
+        <svg width="0" height="0" className="absolute pointer-events-none opacity-0">
+          <filter id="liquidDisplacementFilter">
+            <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="2" result="turbulence" />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="turbulence"
+              scale="180"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+        </svg>
       </div>
 
       {!modalOpen && <NavDots active={active} setActive={setActive} total={totalSlides} />}
