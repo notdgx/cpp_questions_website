@@ -7,11 +7,11 @@ import SlideBackgroundVideo from '../shared/SlideBackgroundVideo'
 import GithubLink from '../shared/GithubLink'
 
 const MetaItem = ({ label, value }) => (
-  <div className="flex flex-col gap-1">
-    <span className="text-[var(--text-tertiary)]" style={{ fontSize: 'clamp(11px, 0.9vw, 14px)' }}>
+  <div className="flex items-center gap-1.5 whitespace-nowrap">
+    <span className="text-[var(--text-tertiary)]" style={{ fontSize: 'clamp(10px, 0.85vw, 13px)' }}>
       {label}
     </span>
-    <span className="text-white" style={{ fontSize: 'clamp(12px, 1vw, 16px)' }}>
+    <span className="text-white" style={{ fontSize: 'clamp(11px, 0.95vw, 15px)' }}>
       {value}
     </span>
   </div>
@@ -35,7 +35,7 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo, blurThemeLabel, onTogg
       <BlurReveal isActive={isActive} delay={0.05} duration={0.9}>
         <div className="relative z-[2] flex items-start justify-between px-[5%] pt-[3.5%] md:items-center">
           <Logo />
-          <div className="flex flex-col items-end gap-3 sm:gap-4">
+          <div className="flex flex-col items-end gap-2 sm:gap-4">
             <div className="flex items-center gap-2">
               <GithubLink />
               <button
@@ -47,7 +47,7 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo, blurThemeLabel, onTogg
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-right sm:flex sm:gap-6 md:gap-8">
+            <div className="liquid-glass liquid-glass-pill flex max-w-full items-center gap-2 overflow-x-auto whitespace-nowrap px-2.5 py-1.5 text-right no-scrollbar sm:gap-4 sm:px-3 sm:py-2 md:gap-6 md:px-4">
               <MetaItem label="Type" value="Assignment" />
               <MetaItem label="Problems" value={String(totalProblems)} />
               <MetaItem label="Topics" value="11" />
