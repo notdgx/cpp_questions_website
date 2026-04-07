@@ -91,46 +91,6 @@ select {
   transform: translateY(-1px);
 }
 
-.liquid-glass-trace {
-  --mx: 50%;
-  --my: 50%;
-  --trace-o: 0;
-}
-
-.liquid-glass-trace:hover {
-  background: var(--glass-bg);
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow:
-    0 10px 34px rgba(0, 0, 0, 0.44),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.22);
-  transform: translateY(-1px);
-}
-
-.liquid-glass-trace::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: var(--trace-o);
-  transition: opacity 160ms ease;
-  background:
-    radial-gradient(
-      180px circle at var(--mx) var(--my),
-      rgba(255, 255, 255, 0.18) 0%,
-      rgba(255, 255, 255, 0.09) 28%,
-      rgba(255, 255, 255, 0) 62%
-    ),
-    radial-gradient(
-      110px circle at var(--mx) var(--my),
-      rgba(41, 151, 255, 0.2) 0%,
-      rgba(130, 56, 220, 0.08) 45%,
-      rgba(130, 56, 220, 0) 75%
-    );
-  mix-blend-mode: screen;
-}
-
 .liquid-glass-pill {
   border-radius: 100px;
 }

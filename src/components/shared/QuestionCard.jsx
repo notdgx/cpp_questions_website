@@ -1,26 +1,6 @@
-import { useRef } from 'react'
 import { motion } from 'motion/react'
 
 const QuestionCard = ({ question, index, onClick }) => {
-  const cardRef = useRef(null)
-
-  const handlePointerMove = (e) => {
-    if (e.pointerType && e.pointerType !== 'mouse') return
-    const el = cardRef.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    el.style.setProperty('--mx', `${e.clientX - rect.left}px`)
-    el.style.setProperty('--my', `${e.clientY - rect.top}px`)
-  }
-
-  const handlePointerEnter = () => {
-    cardRef.current?.style.setProperty('--trace-o', '1')
-  }
-
-  const handlePointerLeave = () => {
-    cardRef.current?.style.setProperty('--trace-o', '0')
-  }
-
   return (
     <motion.div
       initial={{ y: 30, opacity: 0 }}
@@ -28,13 +8,9 @@ const QuestionCard = ({ question, index, onClick }) => {
       transition={{ duration: 0.5, delay: 0.5 + index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <button
-        ref={cardRef}
         type="button"
         onClick={onClick}
-        onPointerMove={handlePointerMove}
-        onPointerEnter={handlePointerEnter}
-        onPointerLeave={handlePointerLeave}
-        className="liquid-glass liquid-glass-sm liquid-glass-trace group flex min-h-[100px] w-full cursor-pointer flex-col gap-2 p-4 text-left"
+        className="liquid-glass liquid-glass-sm group flex min-h-[100px] w-full cursor-pointer flex-col gap-2 p-4 text-left"
       >
         <div className="flex items-start justify-between">
           <span className="text-[11px] tracking-widest text-[var(--text-secondary)]">Q{question.id}</span>

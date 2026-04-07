@@ -114,7 +114,25 @@ const App = () => {
 
   useEffect(() => {
     const onKeyDown = (e) => {
-      if (modalOpen) return
+      if (modalOpen) {
+        if (e.code === 'Escape') {
+          setModalOpen(false)
+          return
+        }
+
+        if (e.code === 'ArrowLeft') {
+          goPrevQuestion()
+          return
+        }
+
+        if (e.code === 'ArrowRight') {
+          goNextQuestion()
+          return
+        }
+
+        return
+      }
+
       if (e.code === 'ArrowRight' || e.code === 'ArrowDown' || e.code === 'Space') {
         setActive((prev) => Math.min(prev + 1, maxSlide))
       }
@@ -125,7 +143,7 @@ const App = () => {
 
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [modalOpen, maxSlide])
+  }, [modalOpen, maxSlide, selectedTopic])
 
   return (
     <>
