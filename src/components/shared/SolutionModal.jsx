@@ -75,7 +75,7 @@ const SolutionModal = ({
         </div>
 
         <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 flex flex-1 flex-col gap-5 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5 md:gap-6 md:px-6">
-          <div className="flex flex-col gap-3">
+          <div className="flex min-w-0 flex-col gap-3">
             <BlurReveal isActive delay={0.05}>
               <p className="text-[12px] tracking-widest text-[var(--text-secondary)]">Problem Statement</p>
             </BlurReveal>
@@ -97,17 +97,21 @@ const SolutionModal = ({
               </button>
             </div>
 
-            <div className="liquid-glass modal-answer-box matte-blur-panel glass-scroll-x rounded-xl no-scrollbar">
-              <pre className="matte-code-pre min-w-max bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
-                <code className="block min-w-max" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-              </pre>
+            <div className="liquid-glass modal-answer-box matte-blur-panel w-full min-w-0 max-w-full overflow-hidden rounded-xl">
+              <div className="glass-scroll-x no-scrollbar w-full max-w-full">
+                <pre className="matte-code-pre inline-block min-w-full bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
+                  <code className="block" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+                </pre>
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex min-w-0 flex-col gap-3">
             <p className="text-[12px] tracking-widest text-[var(--text-secondary)]">Console Output</p>
-            <div className="liquid-glass liquid-glass-static matte-blur-panel glass-scroll-x no-scrollbar rounded-xl p-5">
-              <pre className="matte-output-pre min-w-max whitespace-pre font-mono text-[13px] leading-[1.6] text-[#30d158]">{question.output || 'No output provided.'}</pre>
+            <div className="liquid-glass liquid-glass-static matte-blur-panel w-full min-w-0 max-w-full overflow-hidden rounded-xl">
+              <div className="glass-scroll-x no-scrollbar w-full max-w-full">
+                <pre className="matte-output-pre inline-block min-w-full whitespace-pre p-5 font-mono text-[13px] leading-[1.6] text-[#30d158]">{question.output || 'No output provided.'}</pre>
+              </div>
             </div>
           </div>
         </div>

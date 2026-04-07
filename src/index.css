@@ -202,10 +202,29 @@ select {
 }
 
 .glass-scroll-x {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  contain: inline-size;
+}
+
+.glass-scroll-x pre {
+  width: auto;
+  max-width: none;
+  min-width: 100%;
+  margin: 0;
+}
+
+.glass-scroll-x code {
+  display: block;
+  width: auto;
+  max-width: none;
 }
 
 .glass-scroll-x pre,
