@@ -1,27 +1,42 @@
-const NavDots = ({ active, setActive, total = 12, hidden = false }) => {
-  if (hidden) return null
-
+const NavDots = ({ total, active, setActive }) => {
   return (
     <div
-      className="fixed bottom-5 left-1/2 z-[140] flex -translate-x-1/2 items-center gap-2 px-3 py-2 liquid-glass liquid-glass-pill"
-      style={{ bottom: '1.25rem' }}
+      style={{
+        position: 'fixed',
+        bottom: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 50,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        padding: '8px 12px',
+        background: 'rgba(255, 255, 255, 0.08)',
+        backdropFilter: 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+        border: '1px solid rgba(255, 255, 255, 0.18)',
+        borderRadius: '100px',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15)'
+      }}
     >
-      {Array.from({ length: total }).map((_, index) => {
-        const isCurrent = index === active
-        return (
-          <button
-            key={index}
-            type="button"
-            aria-label={`Go to slide ${index + 1}`}
-            onClick={() => setActive(index)}
-            className={
-              isCurrent
-                ? 'h-2.5 w-7 rounded-full bg-white transition-all duration-300'
-                : 'h-2 w-2 rounded-full bg-white/35 transition-all duration-300'
-            }
-          />
-        )
-      })}
+      {Array.from({ length: total }).map((_, i) => (
+        <button
+          key={i}
+          onClick={() => setActive(i)}
+          aria-label={`Go to slide ${i + 1}`}
+          style={{
+            width: active === i ? '24px' : '8px',
+            height: '8px',
+            borderRadius: '100px',
+            background: active === i ? '#ffffff' : 'rgba(255,255,255,0.4)',
+            border: 'none',
+            padding: 0,
+            cursor: 'pointer',
+            transition: 'all 300ms ease',
+            flexShrink: 0
+          }}
+        />
+      ))}
     </div>
   )
 }

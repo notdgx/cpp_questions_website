@@ -97,8 +97,8 @@ const SolutionModal = ({
               </button>
             </div>
 
-            <div className="liquid-glass modal-answer-box overflow-hidden rounded-xl">
-              <pre className="bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
+            <div className="liquid-glass modal-answer-box matte-blur-panel overflow-hidden rounded-xl">
+              <pre className="matte-code-pre bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
                 <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
               </pre>
             </div>
@@ -106,8 +106,8 @@ const SolutionModal = ({
 
           <div className="flex flex-col gap-3">
             <p className="text-[12px] tracking-widest text-[var(--text-secondary)]">Console Output</p>
-            <div className="liquid-glass liquid-glass-static rounded-xl p-5">
-              <pre className="whitespace-pre-wrap font-mono text-[13px] leading-[1.6] text-[#30d158]">{question.output || 'No output provided.'}</pre>
+            <div className="liquid-glass liquid-glass-static matte-blur-panel rounded-xl p-5">
+              <pre className="matte-output-pre whitespace-pre-wrap font-mono text-[13px] leading-[1.6] text-[#30d158]">{question.output || 'No output provided.'}</pre>
             </div>
           </div>
         </div>

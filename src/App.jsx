@@ -128,17 +128,18 @@ const App = () => {
   }, [modalOpen, maxSlide])
 
   return (
-    <div
-      className="relative h-screen w-screen overflow-hidden bg-black"
-      onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
-      onTouchEnd={(e) => {
-        if (modalOpen || touchStartX == null) return
-        const delta = e.changedTouches[0].clientX - touchStartX
-        if (delta > 50) setActive((prev) => Math.max(prev - 1, 0))
-        if (delta < -50) setActive((prev) => Math.min(prev + 1, maxSlide))
-        setTouchStartX(null)
-      }}
-    >
+    <>
+      <div
+        className="relative h-screen w-screen overflow-hidden bg-black"
+        onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+        onTouchEnd={(e) => {
+          if (modalOpen || touchStartX == null) return
+          const delta = e.changedTouches[0].clientX - touchStartX
+          if (delta > 50) setActive((prev) => Math.max(prev - 1, 0))
+          if (delta < -50) setActive((prev) => Math.min(prev + 1, maxSlide))
+          setTouchStartX(null)
+        }}
+      >
       {slides.map((slide) => {
         const isActive = active === slide.id
         return (
@@ -153,15 +154,6 @@ const App = () => {
           </motion.section>
         )
       })}
-
-      <NavDots active={active} setActive={setActive} total={totalSlides} hidden={modalOpen} />
-      <NavArrows
-        active={active}
-        max={maxSlide}
-        onPrev={() => setActive((prev) => Math.max(prev - 1, 0))}
-        onNext={() => setActive((prev) => Math.min(prev + 1, maxSlide))}
-        hidden={modalOpen}
-      />
 
       <WaterBubbleTransition open={modalOpen} clickOrigin={clickOrigin}>
         <SolutionModal
@@ -192,7 +184,17 @@ const App = () => {
           />
         </filter>
       </svg>
-    </div>
+      </div>
+
+      {!modalOpen && <NavDots active={active} setActive={setActive} total={totalSlides} />}
+      <NavArrows
+        active={active}
+        max={maxSlide}
+        onPrev={() => setActive((prev) => Math.max(prev - 1, 0))}
+        onNext={() => setActive((prev) => Math.min(prev + 1, maxSlide))}
+        hidden={modalOpen}
+      />
+    </>
   )
 }
 
