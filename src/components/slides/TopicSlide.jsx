@@ -36,8 +36,8 @@ const TopicSlide = ({ topicIndex, isActive, onQuestionOpen, bgVideo }) => {
 
       <Divider className="relative z-[2] mt-6 px-[5%]" />
 
-      <div key={activationCount} className="relative z-[2] flex min-h-0 flex-1 flex-col px-[5%] pt-[3%] pb-[80px] overflow-hidden">
-        <div className="max-w-[85%] md:max-w-[65%] flex-shrink-0">
+      <div key={activationCount} className="relative z-[2] flex min-h-0 flex-1 flex-col px-[5%] pt-[4%] pb-[78px] overflow-hidden sm:pt-[3.5%] sm:pb-[84px]">
+        <div className="max-w-full md:max-w-[65%] flex-shrink-0">
           <BlurReveal isActive={isActive} delay={0.15}>
             <p
               className="uppercase tracking-widest text-[var(--text-secondary)]"
@@ -47,7 +47,7 @@ const TopicSlide = ({ topicIndex, isActive, onQuestionOpen, bgVideo }) => {
             </p>
           </BlurReveal>
 
-          <h2 className="mt-1 text-white leading-[1.04]" style={{ fontSize: 'clamp(20px, 3.5vw, 56px)', wordBreak: 'normal' }}>
+          <h2 className="mt-1 text-white leading-[1.04]" style={{ fontSize: 'clamp(19px, 3.5vw, 56px)', wordBreak: 'normal' }}>
             <WordByWordReveal text={`Explore ${topic.title} problems`} isActive={isActive} delay={0.25} />
           </h2>
 
@@ -62,7 +62,7 @@ const TopicSlide = ({ topicIndex, isActive, onQuestionOpen, bgVideo }) => {
         </div>
 
         <div
-          className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 mt-8 grid min-h-0 flex-1 content-start gap-3 overflow-y-auto overflow-x-hidden pr-1 pb-2"
+          className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 mt-6 grid min-h-0 flex-1 content-start gap-3 overflow-y-auto overflow-x-hidden pr-1 pb-2 sm:mt-8"
           style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(260px, 100%), 1fr))' }}
         >
           {topic.questions.map((question, index) => (

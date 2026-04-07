@@ -20,7 +20,7 @@ const NavArrows = ({ active, max, onPrev, onNext, hidden = false }) => {
         onClick={onPrev}
         aria-label="Previous slide"
         disabled={active <= 0}
-        className="fixed left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl liquid-glass cursor-pointer disabled:pointer-events-none disabled:opacity-30"
+        className="fixed left-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-2xl liquid-glass cursor-pointer md:left-4 md:flex md:h-12 md:w-12 disabled:pointer-events-none disabled:opacity-30"
       >
         <PrevIcon />
       </button>
@@ -29,7 +29,7 @@ const NavArrows = ({ active, max, onPrev, onNext, hidden = false }) => {
         onClick={onNext}
         aria-label="Next slide"
         disabled={active >= max}
-        className="fixed right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl liquid-glass cursor-pointer disabled:pointer-events-none disabled:opacity-30"
+        className="fixed right-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-2xl liquid-glass cursor-pointer md:right-4 md:flex md:h-12 md:w-12 disabled:pointer-events-none disabled:opacity-30"
       >
         <NextIcon />
       </button>

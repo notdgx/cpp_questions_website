@@ -58,11 +58,11 @@ const SolutionModal = ({
     <div className="fixed inset-0 z-50 flex flex-col">
       <div className="absolute inset-0 bg-black/24 backdrop-blur-[10px]" />
 
-      <div className="liquid-glass liquid-glass-static modal-hoverless relative my-8 mx-auto flex max-h-[88vh] w-[90%] max-w-5xl flex-col overflow-hidden rounded-3xl">
-        <div className="flex items-start justify-between border-b border-white/10 px-6 pt-6 pb-4">
+      <div className="liquid-glass liquid-glass-static modal-hoverless relative my-4 mx-auto flex max-h-[92vh] w-[94%] max-w-5xl flex-col overflow-hidden rounded-2xl sm:my-6 sm:w-[92%] sm:max-h-[90vh] sm:rounded-3xl md:my-8 md:w-[90%] md:max-h-[88vh]">
+        <div className="flex items-start justify-between border-b border-white/10 px-4 pt-4 pb-3 sm:px-5 sm:pt-5 sm:pb-4 md:px-6 md:pt-6">
           <div>
             <p className="text-[12px] tracking-widest uppercase text-[var(--text-secondary)]">Q{question.id} · {topicTitle}</p>
-            <h2 className="text-[20px] font-medium text-white">{question.title}</h2>
+            <h2 className="text-[17px] font-medium text-white sm:text-[19px] md:text-[20px]">{question.title}</h2>
           </div>
           <button
             type="button"
@@ -74,7 +74,7 @@ const SolutionModal = ({
           </button>
         </div>
 
-        <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 flex flex-1 flex-col gap-6 overflow-y-auto px-6 py-5">
+        <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20 flex flex-1 flex-col gap-5 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5 md:gap-6 md:px-6">
           <div className="flex flex-col gap-3">
             <BlurReveal isActive delay={0.05}>
               <p className="text-[12px] tracking-widest text-[var(--text-secondary)]">Problem Statement</p>
@@ -97,31 +97,31 @@ const SolutionModal = ({
               </button>
             </div>
 
-            <div className="liquid-glass modal-answer-box matte-blur-panel overflow-hidden rounded-xl">
-              <pre className="matte-code-pre bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
-                <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+            <div className="liquid-glass modal-answer-box matte-blur-panel glass-scroll-x rounded-xl no-scrollbar">
+              <pre className="matte-code-pre min-w-max bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
+                <code className="block min-w-max" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
               </pre>
             </div>
           </div>
 
           <div className="flex flex-col gap-3">
             <p className="text-[12px] tracking-widest text-[var(--text-secondary)]">Console Output</p>
-            <div className="liquid-glass liquid-glass-static matte-blur-panel rounded-xl p-5">
-              <pre className="matte-output-pre whitespace-pre-wrap font-mono text-[13px] leading-[1.6] text-[#30d158]">{question.output || 'No output provided.'}</pre>
+            <div className="liquid-glass liquid-glass-static matte-blur-panel glass-scroll-x no-scrollbar rounded-xl p-5">
+              <pre className="matte-output-pre min-w-max whitespace-pre font-mono text-[13px] leading-[1.6] text-[#30d158]">{question.output || 'No output provided.'}</pre>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-between border-t border-white/10 px-6 py-4">
-          <p className="text-[12px] text-[var(--text-tertiary)]">
+        <div className="flex items-center justify-between border-t border-white/10 px-4 py-3 sm:px-5 sm:py-4 md:px-6">
+          <p className="hidden text-[12px] text-[var(--text-tertiary)] sm:block">
             {topicTitle} · Problem {question.id} of {total}
           </p>
-          <div className="flex gap-2">
+          <div className="ml-auto flex gap-2">
             <button
               type="button"
               onClick={onPrev}
               disabled={!hasPrev}
-              className="liquid-glass liquid-glass-pill px-4 py-2 text-[13px] text-white disabled:pointer-events-none disabled:opacity-35"
+              className="liquid-glass liquid-glass-pill px-3 py-2 text-[12px] text-white sm:px-4 sm:text-[13px] disabled:pointer-events-none disabled:opacity-35"
             >
               ← Prev
             </button>
@@ -129,7 +129,7 @@ const SolutionModal = ({
               type="button"
               onClick={onNext}
               disabled={!hasNext}
-              className="liquid-glass rounded-xl border border-[#2997ff]/40 bg-[#2997ff]/20 px-4 py-2 text-[13px] text-[#2997ff] disabled:pointer-events-none disabled:opacity-35"
+              className="liquid-glass rounded-xl border border-[#2997ff]/40 bg-[#2997ff]/20 px-3 py-2 text-[12px] text-[#2997ff] sm:px-4 sm:text-[13px] disabled:pointer-events-none disabled:opacity-35"
             >
               Next →
             </button>

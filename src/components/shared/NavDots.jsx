@@ -3,14 +3,14 @@ const NavDots = ({ total, active, setActive }) => {
     <div
       style={{
         position: 'fixed',
-        bottom: '20px',
+        bottom: 'max(14px, env(safe-area-inset-bottom))',
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 50,
         display: 'flex',
         alignItems: 'center',
-        gap: '8px',
-        padding: '8px 12px',
+        gap: '6px',
+        padding: '6px 10px',
         background: 'rgba(255, 255, 255, 0.08)',
         backdropFilter: 'blur(24px) saturate(180%)',
         WebkitBackdropFilter: 'blur(24px) saturate(180%)',
@@ -25,8 +25,8 @@ const NavDots = ({ total, active, setActive }) => {
           onClick={() => setActive(i)}
           aria-label={`Go to slide ${i + 1}`}
           style={{
-            width: active === i ? '24px' : '8px',
-            height: '8px',
+            width: active === i ? '20px' : '7px',
+            height: '7px',
             borderRadius: '100px',
             background: active === i ? '#ffffff' : 'rgba(255,255,255,0.4)',
             border: 'none',

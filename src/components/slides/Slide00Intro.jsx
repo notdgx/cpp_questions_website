@@ -32,9 +32,9 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo }) => {
       <SlideBackgroundVideo src={bgVideo} isActive />
 
       <BlurReveal isActive={isActive} delay={0.05} duration={0.9}>
-        <div className="relative z-[2] flex items-center justify-between px-[5%] pt-[3.5%]">
+        <div className="relative z-[2] flex items-start justify-between px-[5%] pt-[3.5%] md:items-center">
           <Logo />
-          <div className="flex gap-8">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-right sm:flex sm:gap-6 md:gap-8">
             <MetaItem label="Type" value="Assignment" />
             <MetaItem label="Problems" value={String(totalProblems)} />
             <MetaItem label="Topics" value="11" />
@@ -45,10 +45,10 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo }) => {
 
       <Divider className="relative z-[2] mt-6 px-[5%]" />
 
-      <div key={activationCount} className="relative z-[2] flex flex-1 items-end justify-between gap-10 px-[5%] pb-[8%]">
+      <div key={activationCount} className="relative z-[2] flex flex-1 flex-col justify-end gap-8 px-[5%] pb-[18%] sm:pb-[12%] md:flex-row md:items-end md:justify-between md:gap-10 md:pb-[8%]">
         <h1
           className="text-white leading-[0.9] tracking-tight"
-          style={{ fontSize: 'clamp(48px, 10vw, 140px)' }}
+          style={{ fontSize: 'clamp(36px, 9vw, 140px)' }}
         >
           <span className="block">
             <SlideUpLine isActive={isActive} delay={0.3}>
@@ -62,7 +62,7 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo }) => {
           </span>
         </h1>
 
-        <BlurReveal isActive={isActive} delay={0.8} duration={0.9} className="max-w-[320px] pb-4 text-[var(--text-secondary)]">
+        <BlurReveal isActive={isActive} delay={0.8} duration={0.9} className="max-w-[360px] text-[var(--text-secondary)] md:pb-4">
           <p style={{ fontSize: 'clamp(13px, 1.1vw, 18px)' }}>
             A curated collection of solutions spanning 11 core computer science topics.
           </p>
