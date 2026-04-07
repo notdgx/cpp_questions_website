@@ -4,6 +4,7 @@ import SlideUpLine from '../animated/SlideUpLine'
 import Divider from '../shared/Divider'
 import Logo from '../shared/Logo'
 import SlideBackgroundVideo from '../shared/SlideBackgroundVideo'
+import GithubLink from '../shared/GithubLink'
 
 const MetaItem = ({ label, value }) => (
   <div className="flex flex-col gap-1">
@@ -35,13 +36,16 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo, blurThemeLabel, onTogg
         <div className="relative z-[2] flex items-start justify-between px-[5%] pt-[3.5%] md:items-center">
           <Logo />
           <div className="flex flex-col items-end gap-3 sm:gap-4">
-            <button
-              type="button"
-              onClick={onToggleBlurTheme}
-              className="liquid-glass liquid-glass-pill px-3 py-1.5 text-[11px] tracking-wide text-white/90"
-            >
-              {blurThemeLabel}
-            </button>
+            <div className="flex items-center gap-2">
+              <GithubLink />
+              <button
+                type="button"
+                onClick={onToggleBlurTheme}
+                className="liquid-glass liquid-glass-pill px-3 py-1.5 text-[11px] tracking-wide text-white/90"
+              >
+                {blurThemeLabel}
+              </button>
+            </div>
 
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-right sm:flex sm:gap-6 md:gap-8">
               <MetaItem label="Type" value="Assignment" />

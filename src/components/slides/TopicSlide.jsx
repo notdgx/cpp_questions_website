@@ -5,6 +5,7 @@ import Divider from '../shared/Divider'
 import Logo from '../shared/Logo'
 import QuestionCard from '../shared/QuestionCard'
 import SlideBackgroundVideo from '../shared/SlideBackgroundVideo'
+import GithubLink from '../shared/GithubLink'
 import { topics } from '../../data/manifest'
 
 const TopicSlide = ({ topicIndex, isActive, onQuestionOpen, bgVideo }) => {
@@ -30,7 +31,10 @@ const TopicSlide = ({ topicIndex, isActive, onQuestionOpen, bgVideo }) => {
       <BlurReveal isActive={isActive} delay={0.05} duration={0.9}>
         <div className="relative z-[2] flex items-center justify-between px-[5%] pt-[3.5%]">
           <Logo />
-          <span className="text-[20px] text-[var(--text-secondary)]">{numberLabel}</span>
+          <div className="flex items-center gap-2">
+            <GithubLink />
+            <span className="text-[20px] text-[var(--text-secondary)]">{numberLabel}</span>
+          </div>
         </div>
       </BlurReveal>
 
