@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/cpp_questions_website/',
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
