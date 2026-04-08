@@ -72,9 +72,9 @@ const App = () => {
   const blurTheme = blurThemes[blurThemeIndex]
   const liquidFilterUrl = useMemo(() => {
     const baseUrl = import.meta.env.BASE_URL || '/'
-    const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`
-    if (typeof window === 'undefined') return `${normalizedBase}#liquidDisplacementFilter`
-    return `${window.location.origin}${normalizedBase}#liquidDisplacementFilter`
+    if (typeof window === 'undefined') return `${baseUrl}#liquidDisplacementFilter`
+    const resolvedBasePath = new URL(baseUrl, window.location.origin).pathname
+    return `${window.location.origin}${resolvedBasePath}#liquidDisplacementFilter`
   }, [])
 
   const liquidBackdropVars = useMemo(
