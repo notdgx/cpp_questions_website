@@ -13,6 +13,8 @@
   --accent-blue: #2997ff;
   --accent-purple: #8238dc;
   --accent-pink: #f75cb7;
+  --glass-backdrop-fallback: brightness(1.1) blur(14px) saturate(165%);
+  --glass-backdrop-sm-fallback: brightness(1.08) blur(12px) saturate(150%);
 }
 
 *,
@@ -56,8 +58,10 @@ select {
   isolation: isolate;
   overflow: hidden;
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop, brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter));
-  -webkit-backdrop-filter: var(--glass-backdrop, brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter));
+  backdrop-filter: var(--glass-backdrop-fallback);
+  -webkit-backdrop-filter: var(--glass-backdrop-fallback);
+  backdrop-filter: var(--glass-backdrop, var(--glass-backdrop-fallback));
+  -webkit-backdrop-filter: var(--glass-backdrop, var(--glass-backdrop-fallback));
   border: 1px solid var(--glass-border);
   border-top-color: rgba(255, 255, 255, 0.3);
   border-left-color: rgba(255, 255, 255, 0.22);
@@ -101,8 +105,10 @@ select {
 
 .liquid-glass-sm {
   border-radius: 12px;
-  backdrop-filter: var(--glass-backdrop-sm, brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter));
-  -webkit-backdrop-filter: var(--glass-backdrop-sm, brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter));
+  backdrop-filter: var(--glass-backdrop-sm-fallback);
+  -webkit-backdrop-filter: var(--glass-backdrop-sm-fallback);
+  backdrop-filter: var(--glass-backdrop-sm, var(--glass-backdrop-sm-fallback));
+  -webkit-backdrop-filter: var(--glass-backdrop-sm, var(--glass-backdrop-sm-fallback));
 }
 
 .liquid-glass-static:hover {
@@ -168,8 +174,8 @@ select {
 }
 
 .blur-theme-liquid {
-  --glass-backdrop: brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter);
-  --glass-backdrop-sm: brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter);
+  --glass-backdrop: var(--glass-backdrop-liquid, var(--glass-backdrop-fallback));
+  --glass-backdrop-sm: var(--glass-backdrop-sm-liquid, var(--glass-backdrop-sm-fallback));
 }
 
 .blur-theme-frosted {
