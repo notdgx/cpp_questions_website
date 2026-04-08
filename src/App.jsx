@@ -70,12 +70,14 @@ const App = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null)
   const [clickOrigin, setClickOrigin] = useState({ x: 0, y: 0 })
   const blurTheme = blurThemes[blurThemeIndex]
+  const isBrowser = typeof window !== 'undefined'
+  const liquidLocationPathname = isBrowser ? window.location.pathname : ''
+  const liquidLocationSearch = isBrowser ? window.location.search : ''
   const liquidFilterUrl = useMemo(() => {
-    const baseUrl = import.meta.env.BASE_URL || '/'
-    if (typeof window === 'undefined') return `${baseUrl}#liquidDisplacementFilter`
-    const resolvedBasePath = new URL(baseUrl, window.location.origin).pathname
-    return `${window.location.origin}${resolvedBasePath}#liquidDisplacementFilter`
-  }, [])
+    if (!isBrowser) return '#liquidDisplacementFilter'
+    const { origin, pathname, search } = window.location
+    return `${origin}${pathname}${search}#liquidDisplacementFilter`
+  }, [isBrowser, liquidLocationPathname, liquidLocationSearch])
 
   const liquidBackdropVars = useMemo(
     () => {
