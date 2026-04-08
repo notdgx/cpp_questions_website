@@ -78,10 +78,28 @@ const App = () => {
   }, [])
 
   const liquidBackdropVars = useMemo(
-    () => ({
-      '--glass-backdrop-liquid': `brightness(1.1) blur(14px) saturate(165%) url("${liquidFilterUrl}")`,
-      '--glass-backdrop-sm-liquid': `brightness(1.08) blur(12px) saturate(150%) url("${liquidFilterUrl}")`
-    }),
+    () => {
+      const defaultBackdrop = 'brightness(1.1) blur(14px) saturate(165%)'
+      const defaultSmallBackdrop = 'brightness(1.08) blur(12px) saturate(150%)'
+      const liquidBackdrop = `${defaultBackdrop} url("${liquidFilterUrl}")`
+      const liquidSmallBackdrop = `${defaultSmallBackdrop} url("${liquidFilterUrl}")`
+
+      if (typeof window === 'undefined' || !window.CSS?.supports) {
+        return {
+          '--glass-backdrop-liquid': defaultBackdrop,
+          '--glass-backdrop-sm-liquid': defaultSmallBackdrop
+        }
+      }
+
+      const supportsLiquidBackdrop =
+        window.CSS.supports('backdrop-filter', liquidBackdrop) ||
+        window.CSS.supports('-webkit-backdrop-filter', liquidBackdrop)
+
+      return {
+        '--glass-backdrop-liquid': supportsLiquidBackdrop ? liquidBackdrop : defaultBackdrop,
+        '--glass-backdrop-sm-liquid': supportsLiquidBackdrop ? liquidSmallBackdrop : defaultSmallBackdrop
+      }
+    },
     [liquidFilterUrl]
   )
 
