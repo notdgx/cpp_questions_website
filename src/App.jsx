@@ -20,6 +20,8 @@ import SolutionModal from './components/shared/SolutionModal'
 
 const introVideo = 'https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8'
 const blurThemes = ['smooth', 'frosted', 'liquid']
+const defaultBlurTheme = 'liquid'
+const defaultBlurThemeIndex = Math.max(blurThemes.indexOf(defaultBlurTheme), 0)
 const blurThemeLabels = {
   smooth: 'Smooth Blur',
   frosted: 'Frosted Blur',
@@ -56,13 +58,32 @@ const topicSlideComponents = [
 
 const App = () => {
   const [active, setActive] = useState(0)
-  const [blurThemeIndex, setBlurThemeIndex] = useState(0)
+  const [blurThemeIndex, setBlurThemeIndex] = useState(() => {
+    if (typeof window === 'undefined') return defaultBlurThemeIndex
+    const savedTheme = window.localStorage.getItem('blurTheme')
+    const savedIndex = savedTheme ? blurThemes.indexOf(savedTheme) : -1
+    return savedIndex >= 0 ? savedIndex : defaultBlurThemeIndex
+  })
   const [touchStartX, setTouchStartX] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedTopicIndex, setSelectedTopicIndex] = useState(null)
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null)
   const [clickOrigin, setClickOrigin] = useState({ x: 0, y: 0 })
   const blurTheme = blurThemes[blurThemeIndex]
+  const liquidFilterUrl = useMemo(() => {
+    const baseUrl = import.meta.env.BASE_URL || '/'
+    const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`
+    if (typeof window === 'undefined') return `${normalizedBase}#liquidDisplacementFilter`
+    return `${window.location.origin}${normalizedBase}#liquidDisplacementFilter`
+  }, [])
+
+  const liquidBackdropVars = useMemo(
+    () => ({
+      '--glass-backdrop-liquid': `brightness(1.1) blur(14px) saturate(165%) url("${liquidFilterUrl}")`,
+      '--glass-backdrop-sm-liquid': `brightness(1.08) blur(12px) saturate(150%) url("${liquidFilterUrl}")`
+    }),
+    [liquidFilterUrl]
+  )
 
   const toggleBlurTheme = () => {
     setBlurThemeIndex((index) => (index + 1) % blurThemes.length)
@@ -163,8 +184,13 @@ const App = () => {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [modalOpen, maxSlide, selectedTopic])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem('blurTheme', blurTheme)
+  }, [blurTheme])
+
   return (
-    <div className={`h-full w-full blur-theme-${blurTheme}`}>
+    <div className={`h-full w-full blur-theme-${blurTheme}`} style={liquidBackdropVars}>
       <div
         className="relative h-screen w-screen overflow-hidden bg-black"
         onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}

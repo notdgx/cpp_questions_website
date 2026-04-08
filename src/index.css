@@ -56,8 +56,10 @@ select {
   isolation: isolate;
   overflow: hidden;
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop, brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter));
-  -webkit-backdrop-filter: var(--glass-backdrop, brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter));
+  backdrop-filter: brightness(1.1) blur(14px) saturate(165%);
+  -webkit-backdrop-filter: brightness(1.1) blur(14px) saturate(165%);
+  backdrop-filter: var(--glass-backdrop, brightness(1.1) blur(14px) saturate(165%));
+  -webkit-backdrop-filter: var(--glass-backdrop, brightness(1.1) blur(14px) saturate(165%));
   border: 1px solid var(--glass-border);
   border-top-color: rgba(255, 255, 255, 0.3);
   border-left-color: rgba(255, 255, 255, 0.22);
@@ -101,8 +103,10 @@ select {
 
 .liquid-glass-sm {
   border-radius: 12px;
-  backdrop-filter: var(--glass-backdrop-sm, brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter));
-  -webkit-backdrop-filter: var(--glass-backdrop-sm, brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter));
+  backdrop-filter: brightness(1.08) blur(12px) saturate(150%);
+  -webkit-backdrop-filter: brightness(1.08) blur(12px) saturate(150%);
+  backdrop-filter: var(--glass-backdrop-sm, brightness(1.08) blur(12px) saturate(150%));
+  -webkit-backdrop-filter: var(--glass-backdrop-sm, brightness(1.08) blur(12px) saturate(150%));
 }
 
 .liquid-glass-static:hover {
@@ -168,8 +172,8 @@ select {
 }
 
 .blur-theme-liquid {
-  --glass-backdrop: brightness(1.1) blur(14px) saturate(165%) url(#liquidDisplacementFilter);
-  --glass-backdrop-sm: brightness(1.08) blur(12px) saturate(150%) url(#liquidDisplacementFilter);
+  --glass-backdrop: var(--glass-backdrop-liquid, brightness(1.1) blur(14px) saturate(165%));
+  --glass-backdrop-sm: var(--glass-backdrop-sm-liquid, brightness(1.08) blur(12px) saturate(150%));
 }
 
 .blur-theme-frosted {
