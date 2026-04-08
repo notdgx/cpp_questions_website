@@ -71,10 +71,10 @@ const App = () => {
   const [clickOrigin, setClickOrigin] = useState({ x: 0, y: 0 })
   const blurTheme = blurThemes[blurThemeIndex]
   const liquidFilterUrl = useMemo(() => {
-    const baseUrl = import.meta.env.BASE_URL || '/'
-    if (typeof window === 'undefined') return `${baseUrl}#liquidDisplacementFilter`
-    const resolvedBasePath = new URL(baseUrl, window.location.origin).pathname
-    return `${window.location.origin}${resolvedBasePath}#liquidDisplacementFilter`
+    if (typeof window === 'undefined') return '#liquidDisplacementFilter'
+    const currentPageUrl = new URL(window.location.href)
+    currentPageUrl.hash = 'liquidDisplacementFilter'
+    return currentPageUrl.toString()
   }, [])
 
   const liquidBackdropVars = useMemo(
