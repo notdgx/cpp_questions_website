@@ -83,23 +83,17 @@ const App = () => {
     () => {
       const defaultBackdrop = 'brightness(1.1) blur(14px) saturate(165%)'
       const defaultSmallBackdrop = 'brightness(1.08) blur(12px) saturate(150%)'
-      const liquidBackdrop = `${defaultBackdrop} url("${liquidFilterUrl}")`
-      const liquidSmallBackdrop = `${defaultSmallBackdrop} url("${liquidFilterUrl}")`
 
-      if (typeof window === 'undefined' || !window.CSS?.supports) {
+      if (typeof window === 'undefined') {
         return {
           '--glass-backdrop-liquid': defaultBackdrop,
           '--glass-backdrop-sm-liquid': defaultSmallBackdrop
         }
       }
 
-      const supportsLiquidBackdrop =
-        window.CSS.supports('backdrop-filter', liquidBackdrop) ||
-        window.CSS.supports('-webkit-backdrop-filter', liquidBackdrop)
-
       return {
-        '--glass-backdrop-liquid': supportsLiquidBackdrop ? liquidBackdrop : defaultBackdrop,
-        '--glass-backdrop-sm-liquid': supportsLiquidBackdrop ? liquidSmallBackdrop : defaultSmallBackdrop
+        '--glass-backdrop-liquid': `${defaultBackdrop} url("${liquidFilterUrl}")`,
+        '--glass-backdrop-sm-liquid': `${defaultSmallBackdrop} url("${liquidFilterUrl}")`
       }
     },
     [liquidFilterUrl]

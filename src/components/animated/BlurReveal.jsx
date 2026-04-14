@@ -6,11 +6,11 @@ const BlurReveal = ({ children, isActive, delay = 0, duration = 0.9, className =
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, filter: 'blur(8px)' }}
+      initial={{ opacity: 0, y: 12, scale: 0.985 }}
       animate={
         isActive
-          ? { opacity: 1, filter: 'blur(0px)' }
-          : { opacity: 0, filter: 'blur(8px)' }
+          ? { opacity: 1, y: 0, scale: 1 }
+          : { opacity: 0, y: 12, scale: 0.985 }
       }
       transition={{ duration, ease, delay }}
     >

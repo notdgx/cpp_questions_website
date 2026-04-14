@@ -1,7 +1,9 @@
+export const GITHUB_PROFILE_URL = 'https://github.com/notdgx/'
+
 const GithubLink = ({ className = '' }) => {
   return (
     <a
-      href="https://github.com/notdgx/"
+      href={GITHUB_PROFILE_URL}
       target="_blank"
       rel="noreferrer"
       aria-label="Open GitHub profile"

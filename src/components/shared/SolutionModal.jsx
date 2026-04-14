@@ -62,7 +62,7 @@ const SolutionModal = ({
         <div className="flex items-start justify-between border-b border-white/10 px-4 pt-4 pb-3 sm:px-5 sm:pt-5 sm:pb-4 md:px-6 md:pt-6">
           <div>
             <p className="text-[12px] tracking-widest uppercase text-[var(--text-secondary)]">Q{question.id} · {topicTitle}</p>
-            <h2 className="text-[17px] font-medium text-white sm:text-[19px] md:text-[20px]">{question.title}</h2>
+            <h2 className="text-[17px] text-white sm:text-[19px] md:text-[20px]">{question.title}</h2>
           </div>
           <button
             type="button"
@@ -99,7 +99,7 @@ const SolutionModal = ({
 
             <div className="liquid-glass modal-answer-box matte-blur-panel w-full min-w-0 max-w-full overflow-hidden rounded-xl">
               <div className="glass-scroll-x no-scrollbar w-full max-w-full">
-                <pre className="matte-code-pre inline-block min-w-full bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: "'SF Mono', Monaco, 'Cascadia Code', monospace" }}>
+                <pre className="matte-code-pre inline-block min-w-full bg-transparent p-5 text-[13px] leading-[1.6] text-white" style={{ fontFamily: 'var(--font-main)' }}>
                   <code className="block" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
                 </pre>
               </div>

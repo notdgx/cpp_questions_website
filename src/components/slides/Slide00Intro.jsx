@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'motion/react'
 import BlurReveal from '../animated/BlurReveal'
 import SlideUpLine from '../animated/SlideUpLine'
 import Divider from '../shared/Divider'
 import Logo from '../shared/Logo'
 import SlideBackgroundVideo from '../shared/SlideBackgroundVideo'
-import GithubLink from '../shared/GithubLink'
+import GithubLink, { GITHUB_PROFILE_URL } from '../shared/GithubLink'
 
 const MetaItem = ({ label, value }) => (
   <div className="flex items-center gap-1.5 whitespace-nowrap">
@@ -15,6 +16,17 @@ const MetaItem = ({ label, value }) => (
       {value}
     </span>
   </div>
+)
+
+const ExploreMoreLink = () => (
+  <a
+    href={GITHUB_PROFILE_URL}
+    target="_blank"
+    rel="noreferrer"
+    className="liquid-glass liquid-glass-pill inline-flex items-center px-3 py-1.5 text-[11px] tracking-wide text-white/90"
+  >
+    Explore More
+  </a>
 )
 
 const Slide00Intro = ({ isActive, totalProblems, bgVideo, blurThemeLabel, onToggleBlurTheme }) => {
@@ -32,11 +44,17 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo, blurThemeLabel, onTogg
     <div className="relative flex h-full w-full flex-col overflow-hidden bg-[#0a0a0f]">
       <SlideBackgroundVideo src={bgVideo} isActive />
 
-      <BlurReveal isActive={isActive} delay={0.05} duration={0.9}>
-        <div className="relative z-[2] flex items-start justify-between px-[5%] pt-[3.5%] md:items-center">
+      <motion.div
+        className="relative z-[2]"
+        initial={{ opacity: 0, y: -12 }}
+        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: -12 }}
+        transition={{ duration: 0.7, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <div className="flex items-start justify-between px-[5%] pt-[3.5%] md:items-center">
           <Logo />
           <div className="flex flex-col items-end gap-2 sm:gap-4">
             <div className="flex items-center gap-2">
+              <ExploreMoreLink />
               <GithubLink />
               <button
                 type="button"
@@ -55,7 +73,7 @@ const Slide00Intro = ({ isActive, totalProblems, bgVideo, blurThemeLabel, onTogg
             </div>
           </div>
         </div>
-      </BlurReveal>
+      </motion.div>
 
       <Divider className="relative z-[2] mt-6 px-[5%]" />
 

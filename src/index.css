@@ -13,6 +13,9 @@
   --accent-blue: #2997ff;
   --accent-purple: #8238dc;
   --accent-pink: #f75cb7;
+  --font-main: "Cascadia Code", "Cascadia Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --font-sans: var(--font-main);
+  --font-mono: var(--font-main);
   --glass-backdrop-fallback: brightness(1.1) blur(14px) saturate(165%);
   --glass-backdrop-sm-fallback: brightness(1.08) blur(12px) saturate(150%);
 }
@@ -21,6 +24,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: var(--font-main);
+  font-weight: 700;
 }
 
 html,
@@ -37,7 +42,6 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -93,6 +97,18 @@ select {
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     inset 0 -1px 0 rgba(0, 0, 0, 0.25);
   transform: translateY(-1px);
+}
+
+.liquid-glass:focus-visible,
+.liquid-glass:active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.27);
+  transform: translateY(-1px);
+  outline: none;
 }
 
 .liquid-glass-pill {

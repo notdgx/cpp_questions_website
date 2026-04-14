@@ -2,7 +2,7 @@ export const topics = [
   {
     "id": 0,
     "slug": "intro",
-    "title": "DSA Portfolio",
+    "title": "C++ Questions",
     "subtitle": "11 Topics · 268 Problems",
     "description": "A curated collection of solutions spanning 11 core computer science topics.",
     "questions": []
